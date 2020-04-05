@@ -1,9 +1,13 @@
-public class Application {
+package User;
+
+import Hotel.Hotel;
+
+public class ApplicationController {
 
     static DataController dataController;
-    static Hotel hotel;
+    public static Hotel hotel;
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         //Load data
         dataController = new DataController();
@@ -12,13 +16,14 @@ public class Application {
 
         //reset data
         boolean reset = false;
-        if (reset) {
+        if(reset) {
             hotel = new Hotel();
         }
         //reset data
 
         //main application
-
+        ApplicationBoundary applicationBoundary = new ApplicationBoundary();
+        applicationBoundary.enterInterface();
         //main application
 
         //Save data

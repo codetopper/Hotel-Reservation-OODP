@@ -1,3 +1,5 @@
+package Hotel;
+
 import java.io.Serializable;
 
 enum ROOM_STATUS {VACANT, OCCUPIED, RESERVED, UNDER_MAINTENANCE};

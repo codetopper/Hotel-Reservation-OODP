@@ -1,11 +1,13 @@
+package Hotel;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Hotel implements Serializable {
 
-    private ArrayList<Room> rooms;
+    public static ArrayList<Room> rooms;
 
-    Hotel() {
+    public Hotel() {
         rooms = new ArrayList<>();
         for(int i =1; i<=1; i++) {
             rooms.add(new Room("0"+(700+i), ROOM_TYPE.VIP_SUITE, BED_TYPE.MASTER, true, true, true));
@@ -64,11 +66,11 @@ public class Hotel implements Serializable {
 
     //to be transfered to price
 //    public String getRoomDetails(String id) {
-//        for (Room room : rooms) {
+//        for (Hotel.Room room : rooms) {
 //            if (room.getRoomId().equals(id)) {
-//                String description = "Room ID:\t" + room.getRoomId() + "\n" +
-//                        "Room Status:\t" + room.getStatus() + "\n" +
-//                        "Room Type:\t" + room.getRoomType() + "\n" +
+//                String description = "Hotel.Room ID:\t" + room.getRoomId() + "\n" +
+//                        "Hotel.Room Status:\t" + room.getStatus() + "\n" +
+//                        "Hotel.Room Type:\t" + room.getRoomType() + "\n" +
 //                        "Bed Type:\t" + room.getBedType() + "\n" +
 //                        "Has Wifi:\t" + room.isHasWifi() + "\n" +
 //                        "Has View:\t" + room.isHasView() + "\n" +
@@ -76,6 +78,6 @@ public class Hotel implements Serializable {
 //                return description;
 //            }
 //        }
-//        return "Room does not exist.";
+//        return "Hotel.Room does not exist.";
 //    }
 }
