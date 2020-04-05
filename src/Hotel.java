@@ -4,19 +4,25 @@ public class Hotel {
 
     private ArrayList<Room> rooms;
 
-    public Hotel(int VIP_QUANTITY, int DELUXE_QUANTITY, int DOUBLE_QUANTITY, int SINGLE_QUANTITY) {
+    public Hotel() {
         rooms = new ArrayList<>();
-        for(int i =0; i<VIP_QUANTITY; i++) {
-            rooms.add(new Room(Integer.toString(i), ROOM_TYPE.VIP_SUITE, BED_TYPE.MASTER, true, true, true));
+        for(int i =1; i<=1; i++) {
+            rooms.add(new Room(Integer.toString(0700+i), ROOM_TYPE.VIP_SUITE, BED_TYPE.MASTER, true, true, true));
         }
-        for(int i =0; i<DELUXE_QUANTITY; i++) {
-            rooms.add(new Room(Integer.toString(i), ROOM_TYPE.DELUXE, BED_TYPE.MASTER, true, false, true));
+        for(int i =1; i<=7; i++) {
+            rooms.add(new Room(Integer.toString(0600+i), ROOM_TYPE.DELUXE, BED_TYPE.MASTER, true, true, true));
         }
-        for(int i =0; i<DOUBLE_QUANTITY; i++) {
-            rooms.add(new Room(Integer.toString(i), ROOM_TYPE.DOUBLE, BED_TYPE.DOUBLE, true, false, false));
+        for(int i =1; i<=10; i++) {
+            rooms.add(new Room(Integer.toString(0500+i), ROOM_TYPE.DOUBLE, BED_TYPE.DOUBLE, true, true, false));
         }
-        for(int i =0; i<SINGLE_QUANTITY; i++) {
-            rooms.add(new Room(Integer.toString(i), ROOM_TYPE.SINGLE, BED_TYPE.SINGLE, true, false, false));
+        for(int i =1; i<=10; i++) {
+            rooms.add(new Room(Integer.toString(0300+i), ROOM_TYPE.DOUBLE, BED_TYPE.DOUBLE, true, false, false));
+        }
+        for(int i =1; i<=10; i++) {
+            rooms.add(new Room(Integer.toString(0400+i), ROOM_TYPE.SINGLE, BED_TYPE.SINGLE, true, true, false));
+        }
+        for(int i =1; i<=10; i++) {
+            rooms.add(new Room(Integer.toString(0200+i), ROOM_TYPE.SINGLE, BED_TYPE.SINGLE, true, false, false));
         }
     }
 
@@ -64,7 +70,7 @@ public class Hotel {
                         "Bed Type:\t" + room.getBedType() + "\n" +
                         "Has Wifi:\t" + room.isHasWifi() + "\n" +
                         "Has View:\t" + room.isHasView() + "\n" +
-                        "Smoking Allowed:\t" + room.isSmokable() + "\n";
+                        "Smoking Allowed:\t" + room.isSmokable();
                 return description;
             }
         }
