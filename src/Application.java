@@ -10,6 +10,13 @@ public class Application {
         hotel = dataController.loadHotel();
         //Load data
 
+        //reset data
+        boolean reset = false;
+        if (reset) {
+            hotel = new Hotel();
+        }
+        //reset data
+
         //main application
 
         //main application

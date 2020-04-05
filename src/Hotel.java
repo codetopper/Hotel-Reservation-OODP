@@ -1,28 +1,29 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Hotel {
+public class Hotel implements Serializable {
 
     private ArrayList<Room> rooms;
 
-    public Hotel() {
+    Hotel() {
         rooms = new ArrayList<>();
         for(int i =1; i<=1; i++) {
-            rooms.add(new Room(Integer.toString(0700+i), ROOM_TYPE.VIP_SUITE, BED_TYPE.MASTER, true, true, true));
+            rooms.add(new Room("0"+(700+i), ROOM_TYPE.VIP_SUITE, BED_TYPE.MASTER, true, true, true));
         }
         for(int i =1; i<=7; i++) {
-            rooms.add(new Room(Integer.toString(0600+i), ROOM_TYPE.DELUXE, BED_TYPE.MASTER, true, true, true));
+            rooms.add(new Room("0"+(600+i), ROOM_TYPE.DELUXE, BED_TYPE.MASTER, true, true, true));
         }
         for(int i =1; i<=10; i++) {
-            rooms.add(new Room(Integer.toString(0500+i), ROOM_TYPE.DOUBLE, BED_TYPE.DOUBLE, true, true, false));
+            rooms.add(new Room("0"+(500+i), ROOM_TYPE.DOUBLE, BED_TYPE.DOUBLE, true, true, false));
         }
         for(int i =1; i<=10; i++) {
-            rooms.add(new Room(Integer.toString(0300+i), ROOM_TYPE.DOUBLE, BED_TYPE.DOUBLE, true, false, false));
+            rooms.add(new Room("0"+(300+i), ROOM_TYPE.DOUBLE, BED_TYPE.DOUBLE, true, false, false));
         }
         for(int i =1; i<=10; i++) {
-            rooms.add(new Room(Integer.toString(0400+i), ROOM_TYPE.SINGLE, BED_TYPE.SINGLE, true, true, false));
+            rooms.add(new Room("0"+(400+i), ROOM_TYPE.SINGLE, BED_TYPE.SINGLE, true, true, false));
         }
         for(int i =1; i<=10; i++) {
-            rooms.add(new Room(Integer.toString(0200+i), ROOM_TYPE.SINGLE, BED_TYPE.SINGLE, true, false, false));
+            rooms.add(new Room("0"+(200+i), ROOM_TYPE.SINGLE, BED_TYPE.SINGLE, true, false, false));
         }
     }
 
@@ -61,19 +62,20 @@ public class Hotel {
         return false;
     }
 
-    public String getRoomDetails(String id) {
-        for (Room room : rooms) {
-            if (room.getRoomId().equals(id)) {
-                String description = "Room ID:\t" + room.getRoomId() + "\n" +
-                        "Room Status:\t" + room.getStatus() + "\n" +
-                        "Room Type:\t" + room.getRoomType() + "\n" +
-                        "Bed Type:\t" + room.getBedType() + "\n" +
-                        "Has Wifi:\t" + room.isHasWifi() + "\n" +
-                        "Has View:\t" + room.isHasView() + "\n" +
-                        "Smoking Allowed:\t" + room.isSmokable();
-                return description;
-            }
-        }
-        return "Room does not exist.";
-    }
+    //to be transfered to price
+//    public String getRoomDetails(String id) {
+//        for (Room room : rooms) {
+//            if (room.getRoomId().equals(id)) {
+//                String description = "Room ID:\t" + room.getRoomId() + "\n" +
+//                        "Room Status:\t" + room.getStatus() + "\n" +
+//                        "Room Type:\t" + room.getRoomType() + "\n" +
+//                        "Bed Type:\t" + room.getBedType() + "\n" +
+//                        "Has Wifi:\t" + room.isHasWifi() + "\n" +
+//                        "Has View:\t" + room.isHasView() + "\n" +
+//                        "Smoking Allowed:\t" + room.isSmokable();
+//                return description;
+//            }
+//        }
+//        return "Room does not exist.";
+//    }
 }
