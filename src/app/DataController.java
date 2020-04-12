@@ -1,22 +1,24 @@
-package User;
-
-import Hotel.Hotel;
+package app;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import hotel.Hotel;
+
 public class DataController {
 
     public Hotel loadHotel() {
-        Hotel hotel = (Hotel)deserializeObject("hotel.ser");
-        if (hotel==null) {
+    	Hotel hotel = (Hotel) deserializeObject("hotel.ser");
+    	
+        if (hotel == null) {
             hotel = new Hotel();
             System.out.println("You have no existing hotels, a new one has been created!");
-            return hotel;
+        } else {
+        	System.out.println("Your hotel information is loaded!");
         }
-        System.out.println("Your hotel information is loaded!");
+
         return hotel;
     }
 
@@ -26,8 +28,7 @@ public class DataController {
             System.out.println("Successfully Saved: " + filename);
         }
         catch (Exception ex) {
-            System.out.println();
-            ex.printStackTrace();
+            //ex.printStackTrace();
             System.out.println("Failure to Save: " + filename);
         }
     }
@@ -40,8 +41,7 @@ public class DataController {
             return returnObj;
         }
         catch (Exception ex) {
-            System.out.println();
-            ex.printStackTrace();
+            //ex.printStackTrace();
             System.out.println("Failure to Load: " + filename);
             return null;
         }

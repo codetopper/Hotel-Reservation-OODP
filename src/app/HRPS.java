@@ -1,19 +1,17 @@
-package User;
+package app;
 
-import Hotel.Hotel;
+import hotel.Hotel;
 
-public class ApplicationController {
-
-    static DataController dataController;
-    public static Hotel hotel;
+public class HRPS {
 
     public static void main(String[] args) {
 
         //Load data
-        dataController = new DataController();
-        hotel = dataController.loadHotel();
+        DataController dataController = new DataController();
+        Hotel hotel = dataController.loadHotel();
         //Load data
 
+        // What is this doing?
         //reset data
         boolean reset = false;
         if(reset) {
@@ -22,8 +20,8 @@ public class ApplicationController {
         //reset data
 
         //main application
-        ApplicationBoundary applicationBoundary = new ApplicationBoundary();
-        applicationBoundary.enterInterface();
+        AppBoundary appBoundary = new AppBoundary();
+        appBoundary.start(hotel);
         //main application
 
         //Save data
