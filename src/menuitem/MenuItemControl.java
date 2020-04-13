@@ -18,20 +18,6 @@ public class MenuItemControl implements Serializable {
 		menuItems.add(new MenuItem("Dinner Set", "A great way to end your day.", 16.5));
 	}
 	
-	// implementations
-	private MenuItem menuItemMatchingName(String name) {
-		MenuItem menuItemMatchingName = null;
-		
-		for (MenuItem menuItem : menuItems) {
-			if (menuItem.getName().equals(name)) {
-				menuItemMatchingName = menuItem;
-				break;
-			}
-		}
-		
-		return menuItemMatchingName;
-	}
-	
 	// interfaces
 	public void create(String name, String description, double price) {
 		MenuItem menuItemMatchingName = menuItemMatchingName(name);
@@ -72,6 +58,19 @@ public class MenuItemControl implements Serializable {
 		for (MenuItem menuItem : menuItems) {
 			System.out.println(menuItem.toString());
 		}
+	}
+	
+	public MenuItem menuItemMatchingName(String name) {
+		MenuItem menuItemMatchingName = null;
+		
+		for (MenuItem menuItem : menuItems) {
+			if (menuItem.getName().equals(name)) {
+				menuItemMatchingName = menuItem;
+				break;
+			}
+		}
+		
+		return menuItemMatchingName;
 	}
 	
 }
