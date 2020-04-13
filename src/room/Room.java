@@ -51,4 +51,8 @@ public class Room implements Serializable {
     	this.status = status;
     }
 
+    public ROOM_STATUS getStatus() {
+        return status;
+    }
+
 }

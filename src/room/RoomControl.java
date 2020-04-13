@@ -112,17 +112,17 @@ public class RoomControl implements Serializable {
         String reserved = "";
         String underMaintenance = "";
         for (Room room: rooms) {
-            switch (room.getRoomType()) {
-                case SINGLE:
+            switch (room.getStatus()) {
+                case VACANT:
                     vacant += room.getId() + ", ";
                     break;
-                case DOUBLE:
+                case OCCUPIED:
                     occupied += room.getId() + ", ";
                     break;
-                case DELUXE:
+                case RESERVED:
                     reserved += room.getId() + ", ";
                     break;
-                case VIP_SUITE:
+                case UNDER_MAINTENANCE:
                     underMaintenance += room.getId() + ", ";
                     break;
             }
