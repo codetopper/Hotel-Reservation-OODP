@@ -1,9 +1,10 @@
 package menuitem;
 
+// java apis
 import java.io.Serializable;
 
 public class MenuItem implements Serializable {
-	
+
 	// attributes
 	private String name;
 	private String description;
@@ -17,7 +18,6 @@ public class MenuItem implements Serializable {
 	}
 	
 	// interfaces
-	
 	public String toString() {
 		return String.format("%s,\t%s,\t%.2f", name, description, price);
 	}
@@ -25,6 +25,14 @@ public class MenuItem implements Serializable {
 	// getters
 	public String getName() {
 		return name;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public double getPrice() {
+		return price;
 	}
 	
 	// setters
@@ -35,5 +43,5 @@ public class MenuItem implements Serializable {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
+	
 }

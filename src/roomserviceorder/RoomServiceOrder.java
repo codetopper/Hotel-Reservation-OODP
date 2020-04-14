@@ -1,3 +1,6 @@
+/*
+// for reference
+
 package roomserviceorder;
 
 import java.io.Serializable;
@@ -55,3 +58,4 @@ public class RoomServiceOrder implements Serializable {
 	}
 
 }
+*/
