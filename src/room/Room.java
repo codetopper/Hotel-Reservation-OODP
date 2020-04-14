@@ -1,3 +1,6 @@
+/*
+// for reference
+
 package room;
 
 import java.io.Serializable;
@@ -56,3 +59,4 @@ public class Room implements Serializable {
     }
 
 }
+*/
