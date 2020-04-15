@@ -4,11 +4,13 @@ package app;
 import java.util.Scanner;
 // original packages
 import menuitem.MenuItemBoundary;
+import room.RoomBoundary;
 
-public class HRPSBoundary {
+public class AppBoundary {
 	
 	public static Scanner scanner = new Scanner(System.in);
 	MenuItemBoundary menuItemBoundary = new MenuItemBoundary();
+	RoomBoundary roomBoundary = new RoomBoundary();
 	
 	public void display() {
 		int option = -1;
@@ -18,11 +20,12 @@ public class HRPSBoundary {
 			System.out.println("===== Main Menu");
 			System.out.println("1. Menu Item");
 			System.out.println("2. Room Service Order");
+			System.out.println("3. Room Information");
 			System.out.println("0. Quit");
 			System.out.println("=====");
 			
 			// get option
-			option = inIntInRange("Option: ", 0, 2);
+			option = inIntInRange("Option: ", 0, 3);
 			
 			// process option
 			switch(option) {
@@ -32,8 +35,14 @@ public class HRPSBoundary {
 				case 2:
 					System.out.println("option 2");
 					break;
+				case 3:
+					roomBoundary.display();
+					break;
+				default:
+					break;
 			}
 		}
+		System.out.println("Session has ended.");
 	}
 	
 	

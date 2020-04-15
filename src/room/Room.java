@@ -1,4 +1,3 @@
-/*
 // for reference
 
 package room;
@@ -59,4 +58,3 @@ public class Room implements Serializable {
     }
 
 }
-*/

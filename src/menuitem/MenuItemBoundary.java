@@ -3,14 +3,14 @@ package menuitem;
 // java apis
 import java.util.Scanner;
 // original packages
-import app.HRPSBoundary;
+import app.AppBoundary;
 
 public class MenuItemBoundary {
 	
 	private MenuItemControl menuItemControl = new MenuItemControl();
 	
 	// shorten variable name
-	Scanner scanner = HRPSBoundary.scanner;
+	Scanner scanner = AppBoundary.scanner;
 	
 	public void display() {
 		int option = -1;
@@ -26,7 +26,7 @@ public class MenuItemBoundary {
 			System.out.println("=====");
 			
 			// get option
-			option = HRPSBoundary.inIntInRange("Option: ", 0, 4);
+			option = AppBoundary.inIntInRange("Option: ", 0, 4);
 			
 			// process option
 			String name;
@@ -43,7 +43,7 @@ public class MenuItemBoundary {
 					name = scanner.nextLine();
 					System.out.printf("Enter description: ");
 					description = scanner.nextLine();
-					price = HRPSBoundary.inDoublePos("Enter price: ");
+					price = AppBoundary.inDoublePos("Enter price: ");
 					
 					menuItemControl.create(name, description, price);
 					System.out.println();
@@ -53,7 +53,7 @@ public class MenuItemBoundary {
 					name = scanner.nextLine();
 					System.out.printf("Enter description: ");
 					description = scanner.nextLine();
-					price = HRPSBoundary.inDoublePos("Enter price: ");
+					price = AppBoundary.inDoublePos("Enter price: ");
 					
 					menuItemControl.update(name, description, price);
 					System.out.println();

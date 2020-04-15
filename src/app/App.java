@@ -1,10 +1,10 @@
 package app;
 
-public class HRPS {
+public class App {
 
 	public static void main(String[] args) {
 		
-		HRPSBoundary boundary = new HRPSBoundary();
+		AppBoundary boundary = new AppBoundary();
 		boundary.display();
 
 	}
