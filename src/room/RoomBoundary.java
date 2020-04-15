@@ -56,7 +56,7 @@ public class RoomBoundary {
                     System.out.println("Enter 2 for \"Occupied\".");
                     System.out.println("Enter 3 for \"Reserved\".");
                     System.out.println("Enter 4 for \"Under Maintenance\".");
-                    System.out.printf("Please enter " + roomId + " new status: ");
+                    System.out.println("Please enter " + roomId + " new status: ");
                     option = AppBoundary.inIntInRange("Option: ", 1, 4);
                     System.out.println(roomControl.updateRoomStatus(roomId, option));
                     break;

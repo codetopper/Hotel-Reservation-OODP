@@ -1,11 +1,8 @@
 package data;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
-public class DataUtil {
+public class DataUtil implements Serializable {
 	
 	String file = "hotel.ser";
 	
@@ -19,18 +16,20 @@ public class DataUtil {
 			return null;
 		}
 	}
-	
-	
-	// interfaces
-	public Hotel readHotel() {
+
+	public void loadHotel() {
 		Hotel hotel = (Hotel) read();
-		
+
 		if (hotel == null) {
 			hotel = new Hotel();
 			System.out.println("Created new hotel.");
 			write(hotel);
 		}
-		
+	}
+	
+	// interfaces
+	public Hotel readHotel() {
+		Hotel hotel = (Hotel) read();
 		return hotel;
 	}
 	
@@ -40,6 +39,7 @@ public class DataUtil {
 			System.out.printf("Successfully saved: %s\n", file);
 		}
 		catch (Exception e) {
+			e.printStackTrace();
 			System.out.printf("Failure to save: %s\n", file);
 		}
 	}

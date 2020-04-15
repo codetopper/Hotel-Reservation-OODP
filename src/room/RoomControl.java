@@ -11,8 +11,30 @@ import menuitem.MenuItemDAO;
 public class RoomControl implements Serializable {
 	
 	// attributes
-	private ArrayList<Room> rooms;
     private RoomDAO dao = new RoomDAO();
+
+    public ArrayList<Room> createRooms() {
+        ArrayList<Room> rooms = new ArrayList<>();
+        for(int i =1; i<=1; i++) {
+            rooms.add(new Room("0"+(700+i), ROOM_TYPE.VIP_SUITE, BED_TYPE.MASTER, true, true, true));
+        }
+        for(int i =1; i<=7; i++) {
+            rooms.add(new Room("0"+(600+i), ROOM_TYPE.DELUXE, BED_TYPE.MASTER, true, true, true));
+        }
+        for(int i =1; i<=10; i++) {
+            rooms.add(new Room("0"+(500+i), ROOM_TYPE.DOUBLE, BED_TYPE.DOUBLE, true, true, false));
+        }
+        for(int i =1; i<=10; i++) {
+            rooms.add(new Room("0"+(300+i), ROOM_TYPE.DOUBLE, BED_TYPE.DOUBLE, true, false, false));
+        }
+        for(int i =1; i<=10; i++) {
+            rooms.add(new Room("0"+(400+i), ROOM_TYPE.SINGLE, BED_TYPE.SINGLE, true, true, false));
+        }
+        for(int i =1; i<=10; i++) {
+            rooms.add(new Room("0"+(200+i), ROOM_TYPE.SINGLE, BED_TYPE.SINGLE, true, false, false));
+        }
+        return rooms;
+    }
 
     public String checkRoomAvailability(int option, String info) {
         if(option == 1) {
