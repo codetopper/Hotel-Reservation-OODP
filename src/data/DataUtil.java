@@ -7,29 +7,41 @@ import java.io.ObjectOutputStream;
 
 public class DataUtil {
 	
-    public static void serializeObject(Object objectToBeSaved, String filename) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
-            oos.writeObject(objectToBeSaved);
-            System.out.println("Successfully Saved: " + filename);
-        }
-        catch (Exception ex) {
-            //ex.printStackTrace();
-            System.out.println("Failure to Save: " + filename);
-        }
-    }
-
-    public static Object deserializeObject(String filename) {
-        Object returnObj;
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
-            returnObj = ois.readObject();
-            //System.out.println("Successfully Loaded: " + filename);
-            return returnObj;
-        }
-        catch (Exception ex) {
-            //ex.printStackTrace();
-            System.out.println("Failure to Load: " + filename);
-            return null;
-        }
-    }
+	String file = "hotel.ser";
+	
+	// implementations
+	private Object read() {
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+			return ois.readObject();
+		}
+		catch (Exception e) {
+			System.out.printf("Failure to load: %s\n", file);
+			return null;
+		}
+	}
+	
+	
+	// interfaces
+	public Hotel readHotel() {
+		Hotel hotel = (Hotel) read();
+		
+		if (hotel == null) {
+			hotel = new Hotel();
+			System.out.println("Created new hotel.");
+			write(hotel);
+		}
+		
+		return hotel;
+	}
+	
+	public void write(Object obj) {
+		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
+			oos.writeObject(obj);
+			System.out.printf("Successfully saved: %s\n", file);
+		}
+		catch (Exception e) {
+			System.out.printf("Failure to save: %s\n", file);
+		}
+	}
 
 }
