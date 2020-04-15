@@ -16,20 +16,15 @@ public class DataUtil implements Serializable {
 			return null;
 		}
 	}
-
-	public void loadHotel() {
+	
+	// interfaces
+	public Hotel readHotel() {
 		Hotel hotel = (Hotel) read();
-
 		if (hotel == null) {
 			hotel = new Hotel();
 			System.out.println("Created new hotel.");
 			write(hotel);
 		}
-	}
-	
-	// interfaces
-	public Hotel readHotel() {
-		Hotel hotel = (Hotel) read();
 		return hotel;
 	}
 	
