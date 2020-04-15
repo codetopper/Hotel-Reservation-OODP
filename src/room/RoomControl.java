@@ -4,19 +4,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import app.AppBoundary;
+import menuitem.MenuItem;
+import menuitem.MenuItemDAO;
 
 
 public class RoomControl implements Serializable {
 	
 	// attributes
-	private ArrayList<Room> rooms;
-	
-	// constructors
-	public RoomControl() {
-		rooms = new ArrayList<>();
-		
-		// create default rooms
-		for(int i =1; i<=1; i++) {
+    private RoomDAO dao = new RoomDAO();
+
+    public ArrayList<Room> createRooms() {
+        ArrayList<Room> rooms = new ArrayList<>();
+        for(int i =1; i<=1; i++) {
             rooms.add(new Room("0"+(700+i), ROOM_TYPE.VIP_SUITE, BED_TYPE.MASTER, true, true, true));
         }
         for(int i =1; i<=7; i++) {
@@ -34,12 +33,30 @@ public class RoomControl implements Serializable {
         for(int i =1; i<=10; i++) {
             rooms.add(new Room("0"+(200+i), ROOM_TYPE.SINGLE, BED_TYPE.SINGLE, true, false, false));
         }
-	}
-	
-	// interfaces
-	public void updateRoom(String id, int status) {
+        return rooms;
+    }
+
+    public String checkRoomAvailability(int option, String info) {
+        if(option == 1) {
+            ArrayList<Room> rooms = dao.getAllItem();
+            for (Room room : rooms) {
+                if (room.getId().equals(info)){
+                    return "The room is " + room.getStatus();
+                }
+            }
+            return "The room does not exist.";
+        }
+        else if(option == 2) {
+            return "The customer does not have a room yet.";
+        }
+        return "Invalid input.";
+    }
+
+    // interfaces
+	public String updateRoomStatus(String id, int status) {
 		Room roomMatchingId = null;
-		
+        ArrayList<Room> rooms = dao.getAllItem();
+
 		for (Room room : rooms) {
 			if(room.getId().equals(id)) {
 				roomMatchingId = room;
@@ -48,27 +65,30 @@ public class RoomControl implements Serializable {
 		}
 		
 		if (roomMatchingId == null) {
-			System.out.println("Cannot find room matching id.");
-			return;
+			return "Cannot find matching Room ID.";
 		}
 		
 		switch(status) {
-        case 1:
-            roomMatchingId.setStatus(ROOM_STATUS.VACANT);
-            break;
-        case 2:
-        	roomMatchingId.setStatus(ROOM_STATUS.OCCUPIED);
-            break;
-        case 3:
-        	roomMatchingId.setStatus(ROOM_STATUS.RESERVED);
-            break;
-        case 4:
-        	roomMatchingId.setStatus(ROOM_STATUS.UNDER_MAINTENANCE);
-            break;
+            case 1:
+                dao.update(roomMatchingId, ROOM_STATUS.VACANT);
+                return roomMatchingId.getId() + " new status \"Vacant\" is updated.";
+            case 2:
+                dao.update(roomMatchingId, ROOM_STATUS.OCCUPIED);
+                return roomMatchingId.getId() + " new status \"Occupied\" is updated.";
+            case 3:
+                dao.update(roomMatchingId, ROOM_STATUS.RESERVED);
+                return roomMatchingId.getId() + " new status \"Reserved\" is updated.";
+            case 4:
+                dao.update(roomMatchingId, ROOM_STATUS.UNDER_MAINTENANCE);
+                return roomMatchingId.getId() + " new status \"Under Maintenance\" is updated.";
+            default:
+                break;
 		}
+		return "Nothing is updated";
     }
     
-    public String vacantToString(){
+    public String findVacantByRoomType(){
+        ArrayList<Room> rooms = dao.getAllItem();
         int singleCount = 0, doubleCount = 0, deluxeCount = 0, vipCount = 0;
         String vacantRooms = "Vacant rooms:";
         String vacantSingle = "";
@@ -95,6 +115,8 @@ public class RoomControl implements Serializable {
                         vacantVIP = vacantVIP + room.getId() + ", ";
                         vipCount++;
                         break;
+                    default:
+                        break;
                 }
             }
         }
@@ -105,8 +127,9 @@ public class RoomControl implements Serializable {
     }
     
     
-    // What is this doing?
-    public String byStatusToString() {
+
+    public String sortByStatus() {
+        ArrayList<Room> rooms = dao.getAllItem();
         String vacant = "";
         String occupied = "";
         String reserved = "";
@@ -125,9 +148,11 @@ public class RoomControl implements Serializable {
                 case UNDER_MAINTENANCE:
                     underMaintenance += room.getId() + ", ";
                     break;
+                default:
+                    break;
             }
         }
-        return "Vacant:\n\t" + vacant + "\nOccupied:\n\t" + occupied + "\nReserved\n\t" + reserved + "\nUnder Maintenance\n\t" + underMaintenance;
+        return "Vacant:\n\t" + vacant + "\nOccupied:\n\t" + occupied + "\nReserved:\n\t" + reserved + "\nUnder Maintenance:\n\t" + underMaintenance;
     }
 
     //to be transfered to price
