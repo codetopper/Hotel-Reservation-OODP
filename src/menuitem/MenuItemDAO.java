@@ -4,15 +4,13 @@ package menuitem;
 import java.util.ArrayList;
 // original package
 import data.DataUtil;
+import data.Hotel;
 
 public class MenuItemDAO {
-
-	String filename = "menuitem.ser";
+	
+	private DataUtil dataUtil = new DataUtil();
 
 	// implementations
-	/*
-	 * for internal use
-	 */
 	private MenuItem getItemByName(ArrayList<MenuItem> menuItems, String name) {
 		MenuItem menuItemMatchingName = null;
 
@@ -28,35 +26,15 @@ public class MenuItemDAO {
 
 	// interfaces
 	public ArrayList<MenuItem> getAllItem() {
-		ArrayList<MenuItem> menuItems = (ArrayList<MenuItem>) DataUtil.deserializeObject(filename);
-
-		if (menuItems == null) {
-			menuItems = new ArrayList<>();
-			DataUtil.serializeObject(menuItems, filename);
-		}
-
+		Hotel hotel = dataUtil.readHotel();
+		ArrayList<MenuItem> menuItems = hotel.getMenuItems();
+		
 		return menuItems;
 	}
 
-	/*
-	 * for external use
-	 */
-	public MenuItem getItemByName(String name) {
-		ArrayList<MenuItem> menuItems = getAllItem();
-		MenuItem menuItemMatchingName = null;
-
-		for (MenuItem menuItem : menuItems) {
-			if (menuItem.getName().equals(name)) {
-				menuItemMatchingName = menuItem;
-				break;
-			}
-		}
-
-		return menuItemMatchingName;
-	}
-
 	public void add(MenuItem menuItemInput) {
-		ArrayList<MenuItem> menuItems = getAllItem();
+		Hotel hotel = dataUtil.readHotel();
+		ArrayList<MenuItem> menuItems = hotel.getMenuItems();
 		MenuItem menuItemMatchingName = getItemByName(menuItems, menuItemInput.getName());
 
 		if (!(menuItemMatchingName == null)) {
@@ -65,11 +43,12 @@ public class MenuItemDAO {
 		}
 
 		menuItems.add(menuItemInput);
-		DataUtil.serializeObject(menuItems, filename);
+		dataUtil.write(hotel);
 	}
 
 	public void update(MenuItem menuItemInput) {
-		ArrayList<MenuItem> menuItems = getAllItem();
+		Hotel hotel = dataUtil.readHotel();
+		ArrayList<MenuItem> menuItems = hotel.getMenuItems();
 		MenuItem menuItemMatchingName = getItemByName(menuItems, menuItemInput.getName());
 
 		if (menuItemMatchingName == null) {
@@ -79,11 +58,12 @@ public class MenuItemDAO {
 
 		menuItemMatchingName.setDescription(menuItemInput.getDescription());
 		menuItemMatchingName.setPrice(menuItemInput.getPrice());
-		DataUtil.serializeObject(menuItems, filename);
+		dataUtil.write(hotel);
 	}
 
 	public void removeByName(String name) {
-		ArrayList<MenuItem> menuItems = getAllItem();
+		Hotel hotel = dataUtil.readHotel();
+		ArrayList<MenuItem> menuItems = hotel.getMenuItems();
 		MenuItem menuItemMatchingName = getItemByName(menuItems, name);
 
 		if (menuItemMatchingName == null) {
@@ -92,7 +72,7 @@ public class MenuItemDAO {
 		}
 
 		menuItems.remove(menuItemMatchingName);
-		DataUtil.serializeObject(menuItems, filename);
+		dataUtil.write(hotel);
 	}
 
 }
