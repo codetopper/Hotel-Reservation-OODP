@@ -1,10 +1,10 @@
-// for reference
-
 package room;
 
 import java.io.Serializable;
 
 enum ROOM_STATUS {VACANT, OCCUPIED, RESERVED, UNDER_MAINTENANCE};
+enum ROOM_TYPE {SINGLE, DOUBLE,DELUXE, VIP_SUITE}
+enum BED_TYPE {SINGLE, DOUBLE, MASTER};
 
 public class Room implements Serializable {
 
