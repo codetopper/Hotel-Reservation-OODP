@@ -18,11 +18,10 @@ public class RoomBoundary {
         while (!(option == 0)) {
             // display menu
             System.out.println("===== Room Menu");
-            System.out.println("1. Load default");
-            System.out.println("2. Check availability");
-            System.out.println("3. Update");
-            System.out.println("4. Display availability by room type");
-            System.out.println("5. Display by status");
+            System.out.println("1. Check availability");
+            System.out.println("2. Update");
+            System.out.println("3. Display availability by room type");
+            System.out.println("4. Display by status");
             System.out.println("0. Back to Main Menu");
             System.out.println("=====");
 
@@ -34,10 +33,7 @@ public class RoomBoundary {
             String customerName;
 
             switch(option) {
-            	case 1:
-            		roomControl.prepareDefaultRooms();
-            		break;
-                case 2:
+                case 1:
                     System.out.println("Choose option:");
                     System.out.println("1. Use room id");
                     System.out.println("2. Use guest name");
@@ -58,7 +54,7 @@ public class RoomBoundary {
                     
                     System.out.println();
                     break;
-                case 3:
+                case 2:
                     System.out.printf("Enter room id to update: ");
                     roomId = scanner.nextLine();
                     System.out.println("Choose option:");
@@ -71,11 +67,11 @@ public class RoomBoundary {
                     roomControl.updateStatus(roomId, option);
                     System.out.println();
                     break;
-                case 4:
+                case 3:
                     System.out.println(roomControl.getAvailabilityByRoomType());
                     System.out.println();
                     break;
-                case 5:
+                case 4:
                     System.out.println(roomControl.getByStatus());
                     System.out.println();
                     break;
