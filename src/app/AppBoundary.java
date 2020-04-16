@@ -9,6 +9,7 @@ import room.RoomBoundary;
 public class AppBoundary {
 	
 	public static Scanner scanner = new Scanner(System.in);
+	// sub-boundaries
 	MenuItemBoundary menuItemBoundary = new MenuItemBoundary();
 	RoomBoundary roomBoundary = new RoomBoundary();
 	
@@ -42,6 +43,7 @@ public class AppBoundary {
 					break;
 			}
 		}
+		
 		System.out.println("Session has ended.");
 	}
 	

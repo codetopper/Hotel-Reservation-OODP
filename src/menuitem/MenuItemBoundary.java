@@ -7,10 +7,10 @@ import app.AppBoundary;
 
 public class MenuItemBoundary {
 	
-	private MenuItemControl menuItemControl = new MenuItemControl();
-	
 	// shorten variable name
 	Scanner scanner = AppBoundary.scanner;
+	// load control
+	private MenuItemControl menuItemControl = new MenuItemControl();
 	
 	public void display() {
 		int option = -1;

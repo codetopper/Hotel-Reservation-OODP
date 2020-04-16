@@ -8,6 +8,7 @@ import data.Hotel;
 
 public class MenuItemDAO {
 	
+	// load data access
 	private DataUtil dataUtil = new DataUtil();
 
 	// implementations

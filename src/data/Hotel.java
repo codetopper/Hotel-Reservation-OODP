@@ -5,20 +5,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 // original package
 import menuitem.MenuItem;
-import room.BED_TYPE;
-import room.ROOM_TYPE;
 import room.Room;
-import room.RoomControl;
 
+// should only include arraylist
 public class Hotel implements Serializable {
 	
 	ArrayList<MenuItem> menuItems;
 	ArrayList<Room> rooms;
-	RoomControl roomControl = new RoomControl();
 	
 	Hotel() {
 		menuItems = new ArrayList<>();
-		rooms = roomControl.createRooms();
+		rooms = new ArrayList<>();
 	}
 	
 	public ArrayList<MenuItem> getMenuItems() {
@@ -28,7 +25,7 @@ public class Hotel implements Serializable {
 	public ArrayList<Room> getRooms() {
 		return rooms;
 	}
-
+	
 	public void setRooms(ArrayList<Room> rooms) {
 		this.rooms = rooms;
 	}

@@ -1,8 +1,11 @@
 package data;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
-public class DataUtil implements Serializable {
+public class DataUtil {
 	
 	String file = "hotel.ser";
 	
@@ -34,7 +37,6 @@ public class DataUtil implements Serializable {
 			System.out.printf("Successfully saved: %s\n", file);
 		}
 		catch (Exception e) {
-			e.printStackTrace();
 			System.out.printf("Failure to save: %s\n", file);
 		}
 	}
