@@ -9,7 +9,7 @@ public class MenuItemBoundary {
 	
 	// shorten variable name
 	Scanner scanner = AppBoundary.scanner;
-	// load control
+	// load controls
 	private MenuItemControl menuItemControl = new MenuItemControl();
 	
 	public void display() {
