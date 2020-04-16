@@ -1,15 +1,16 @@
 package room;
 
-import app.AppBoundary;
-import menuitem.MenuItemControl;
-
+// java apis
 import java.util.Scanner;
+// original packages
+import app.AppBoundary;
 
 public class RoomBoundary {
-    private RoomControl roomControl = new RoomControl();
 
     // shorten variable name
     Scanner scanner = AppBoundary.scanner;
+    // load control
+    private RoomControl roomControl = new RoomControl();
 
     public void display() {
         int option = -1;
@@ -17,56 +18,66 @@ public class RoomBoundary {
         while (!(option == 0)) {
             // display menu
             System.out.println("===== Room Menu");
-            System.out.println("1. Check Room Availability");
-            System.out.println("2. Update Room Status");
-            System.out.println("3. Find Empty Rooms by Room Type");
-            System.out.println("4. Sort Rooms by Room Status");
+            System.out.println("1. Load default");
+            System.out.println("2. Check availability");
+            System.out.println("3. Update");
+            System.out.println("4. Display availability by room type");
+            System.out.println("5. Display by status");
             System.out.println("0. Back to Main Menu");
             System.out.println("=====");
 
             // get option
-            option = AppBoundary.inIntInRange("Option: ", 0, 4);
+            option = AppBoundary.inIntInRange("Option: ", 0, 5);
 
             // process option
             String roomId;
             String customerName;
 
             switch(option) {
-                case 1:
-                    System.out.printf("Enter 1 to input Room ID.\nEnter 2 to input Customer's Name.\n");
+            	case 1:
+            		roomControl.prepareDefaultRooms();
+            		break;
+                case 2:
+                    System.out.println("Choose option:");
+                    System.out.println("1. Use room id");
+                    System.out.println("2. Use guest name");
                     option = AppBoundary.inIntInRange("Option: ", 1, 2);
+                    
                     switch(option) {
                         case 1:
-                            System.out.printf("Please enter the Room ID: ");
+                            System.out.printf("Room id: ");
                             roomId = scanner.nextLine();
-                            System.out.println(roomControl.checkRoomAvailability(option, roomId));
+                            System.out.println(roomControl.getAvailabilityByRoomId(roomId));
                             break;
                         case 2:
-                            System.out.printf("Please enter the Customer's Name: ");
+                            System.out.printf("Guest name: ");
                             customerName = scanner.nextLine();
-                            System.out.println(roomControl.checkRoomAvailability(option, customerName));
-                            break;
-                        default:
+                            System.out.println(roomControl.getAvailabilityByGuestName(customerName));
                             break;
                     }
-                case 2:
-                    System.out.printf("Please enter the Room ID to be updated: ");
-                    roomId = scanner.nextLine();
-                    System.out.println("Enter 1 for \"Vacant\".");
-                    System.out.println("Enter 2 for \"Occupied\".");
-                    System.out.println("Enter 3 for \"Reserved\".");
-                    System.out.println("Enter 4 for \"Under Maintenance\".");
-                    System.out.println("Please enter " + roomId + " new status: ");
-                    option = AppBoundary.inIntInRange("Option: ", 1, 4);
-                    System.out.println(roomControl.updateRoomStatus(roomId, option));
+                    
+                    System.out.println();
                     break;
                 case 3:
-                    System.out.println(roomControl.findVacantByRoomType());
+                    System.out.printf("Enter room id to update: ");
+                    roomId = scanner.nextLine();
+                    System.out.println("Choose option:");
+                    System.out.println("1. Vacant");
+                    System.out.println("2. Occupied");
+                    System.out.println("3. Reserved");
+                    System.out.println("4. Maintenance");
+                    option = AppBoundary.inIntInRange("Option: ", 1, 4);
+                    
+                    roomControl.updateStatus(roomId, option);
+                    System.out.println();
                     break;
                 case 4:
-                    System.out.println(roomControl.sortByStatus());
+                    System.out.println(roomControl.getAvailabilityByRoomType());
+                    System.out.println();
                     break;
-                default:
+                case 5:
+                    System.out.println(roomControl.getByStatus());
+                    System.out.println();
                     break;
             }
         }
