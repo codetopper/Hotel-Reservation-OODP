@@ -22,6 +22,7 @@ public class RoomBoundary {
             System.out.println("2. Update");
             System.out.println("3. Display availability by room type");
             System.out.println("4. Display by status");
+            System.out.println("5. Reset rooms to default");
             System.out.println("0. Back to Main Menu");
             System.out.println("=====");
 
@@ -73,6 +74,11 @@ public class RoomBoundary {
                     break;
                 case 4:
                     System.out.println(roomControl.getByStatus());
+                    System.out.println();
+                    break;
+                case 5:
+                    roomControl.resetRooms();
+                    System.out.println("Room is reset to default.");
                     System.out.println();
                     break;
             }

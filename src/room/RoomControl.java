@@ -125,6 +125,10 @@ public class RoomControl {
 		return str;
 	}
 
+	public void resetRooms() {
+		dao.prepareDefaultRooms();
+	}
+
 	// to be transfered to price
 //    public String getRoomDetails(String id) {
 //        for (Hotel.Room room : rooms) {

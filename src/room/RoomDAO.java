@@ -19,7 +19,7 @@ public class RoomDAO {
     }
     
     // implementations
-	private void prepareDefaultRooms() {
+	protected void prepareDefaultRooms() {
 		Hotel hotel = dataUtil.readHotel();
 		ArrayList<Room> rooms = new ArrayList<>();
 		
