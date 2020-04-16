@@ -1,18 +1,14 @@
-/*
-// for reference
+package order;
 
-package roomserviceorder;
-
+// java apis
 import java.io.Serializable;
 import java.util.Date;
-
+// original packages
 import menuitem.MenuItem;
 
-enum ORDER_STATUS {CONFIRMED, PREPARING, DELIVERED};
-
-public class RoomServiceOrder implements Serializable {
+public class Order implements Serializable {
 	
-	private static int ClassId = 0;
+	private static int counter = 0;
 	
 	// attributes
 	private String id;
@@ -22,7 +18,7 @@ public class RoomServiceOrder implements Serializable {
 	private ORDER_STATUS status;
 	
 	// constructors
-	public RoomServiceOrder(MenuItem menuItem, String remarks) {
+	public Order(MenuItem menuItem, String remarks) {
 		this.id = String.valueOf(nextId());
 		
 		Date date = new Date();
@@ -35,13 +31,21 @@ public class RoomServiceOrder implements Serializable {
 	
 	// implementations
 	private static int nextId() {
-		ClassId++;
-		return ClassId;
+		counter++;
+		return counter;
 	}
 	
 	// interfaces
 	public String getId() {
 		return id;
+	}
+	
+	public String getRemarks() {
+		return remarks;
+	}
+	
+	public ORDER_STATUS getStatus() {
+		return status;
 	}
 	
 	public void setRemarks(String remarks) {
@@ -58,4 +62,3 @@ public class RoomServiceOrder implements Serializable {
 	}
 
 }
-*/

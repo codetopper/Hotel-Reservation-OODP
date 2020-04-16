@@ -47,16 +47,16 @@ public class RoomDAO {
 	}
 
     private Room getItemById(ArrayList<Room> rooms, String id) { // for internal use
-    	Room roomMatchingName = null;
+    	Room roomMatchingId = null;
     	
     	for (Room room : rooms) {
     		if (room.getId().equals(id)) {
-    			roomMatchingName = room;
+    			roomMatchingId = room;
     			break;
     		}
     	}
     	
-    	return roomMatchingName;
+    	return roomMatchingId;
     }
 
     // interfaces
@@ -69,16 +69,16 @@ public class RoomDAO {
  
     public Room getItemById(String id) { // for external use
     	ArrayList<Room> rooms = getAllItem();
-    	Room roomMatchingName = null;
+    	Room roomMatchingId = null;
     	
     	for (Room room : rooms) {
     		if (room.getId().equals(id)) {
-    			roomMatchingName = room;
+    			roomMatchingId = room;
     			break;
     		}
     	}
     	
-    	return roomMatchingName;
+    	return roomMatchingId;
     }
 
     public void update(Room roomInput) {

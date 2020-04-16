@@ -4,6 +4,7 @@ package app;
 import java.util.Scanner;
 // original packages
 import menuitem.MenuItemBoundary;
+import order.OrderBoundary;
 import room.RoomBoundary;
 
 public class AppBoundary {
@@ -11,6 +12,7 @@ public class AppBoundary {
 	public static Scanner scanner = new Scanner(System.in);
 	// sub-boundaries
 	MenuItemBoundary menuItemBoundary = new MenuItemBoundary();
+	OrderBoundary orderBoundary = new OrderBoundary();
 	RoomBoundary roomBoundary = new RoomBoundary();
 	
 	public void display() {
@@ -34,7 +36,7 @@ public class AppBoundary {
 					menuItemBoundary.display();
 					break;
 				case 2:
-					System.out.println("option 2");
+					orderBoundary.display();
 					break;
 				case 3:
 					roomBoundary.display();

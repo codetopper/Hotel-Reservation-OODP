@@ -12,7 +12,7 @@ public class MenuItemDAO {
 	private DataUtil dataUtil = new DataUtil();
 
 	// implementations
-	private MenuItem getItemByName(ArrayList<MenuItem> menuItems, String name) {
+	private MenuItem getItemByName(ArrayList<MenuItem> menuItems, String name) { // for internal use
 		MenuItem menuItemMatchingName = null;
 
 		for (MenuItem menuItem : menuItems) {
@@ -31,6 +31,20 @@ public class MenuItemDAO {
 		ArrayList<MenuItem> menuItems = hotel.getMenuItems();
 		
 		return menuItems;
+	}
+	
+	public MenuItem getItemByName(String name) {
+		ArrayList<MenuItem> menuItems = getAllItem();
+		MenuItem menuItemMatchingName = null;
+
+		for (MenuItem menuItem : menuItems) {
+			if (menuItem.getName().equals(name)) {
+				menuItemMatchingName = menuItem;
+				break;
+			}
+		}
+
+		return menuItemMatchingName;
 	}
 
 	public void add(MenuItem menuItemInput) {

@@ -5,8 +5,10 @@ import java.util.ArrayList;
 
 public class MenuItemControl {
 	
+	// load dao
 	private MenuItemDAO dao = new MenuItemDAO();
 	
+	// interfaces
 	public void create(String name, String description, double price) {
 		MenuItem menuItem = new MenuItem(name, description, price);
 		dao.add(menuItem);

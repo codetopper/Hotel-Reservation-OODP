@@ -23,7 +23,7 @@ public class RoomControl {
 		return "";
 	}
 
-	public void updateStatus(String id, int option) {
+	public void updateStatus(String id, int choice) {
 		ROOM_STATUS status = ROOM_STATUS.VACANT;
 		Room roomMatchingId = dao.getItemById(id);
 		
@@ -32,7 +32,7 @@ public class RoomControl {
 			return;
 		}
 		
-		switch (option) {
+		switch (choice) {
 			case 1:
 				status = ROOM_STATUS.VACANT;
 				break;
