@@ -28,6 +28,7 @@ public class DataUtil {
 			System.out.println("Created new hotel.");
 			write(hotel);
 		}
+		System.out.println("Loaded your hotel.");
 		return hotel;
 	}
 	

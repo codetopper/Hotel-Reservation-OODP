@@ -85,9 +85,9 @@ public class RoomControl {
 		}
 		// the number of rooms should not be hard coded here
 		// because the number of rooms should change according to the functional requirements
-		return vacantRooms + "\nSingle: " + singleCount + " out of 20\n\t" + vacantSingle + "\nDouble: " + doubleCount
-				+ " out of 20\n\t" + vacantDouble + "\nDeluxe: " + deluxeCount + " out of 7\n\t" + vacantDeluxe
-				+ "\nVIP: " + vipCount + " out of 1\n\t" + vacantVIP;
+		return vacantRooms + "\nSingle: " + singleCount + " out of 20\n\t" + removeLastComma(vacantSingle) + "\nDouble: " + doubleCount
+				+ " out of 20\n\t" + removeLastComma(vacantDouble) + "\nDeluxe: " + deluxeCount + " out of 7\n\t" + removeLastComma(vacantDeluxe)
+				+ "\nVIP: " + vipCount + " out of 1\n\t" + removeLastComma(vacantVIP);
 	}
 
 	public String getByStatus() {
@@ -114,8 +114,15 @@ public class RoomControl {
 				break;
 			}
 		}
-		return "Vacant:\n\t" + vacant + "\nOccupied:\n\t" + occupied + "\nReserved:\n\t" + reserved
-				+ "\nUnder Maintenance:\n\t" + underMaintenance;
+		return "Vacant:\n\t" + removeLastComma(vacant) + "\nOccupied:\n\t" + removeLastComma(occupied) + "\nReserved:\n\t" + removeLastComma(reserved)
+				+ "\nUnder Maintenance:\n\t" + removeLastComma(underMaintenance);
+	}
+
+	public String removeLastComma(String str) {
+		if (str != null && !str.isBlank() && !str.isEmpty()) {
+			str = str.substring(0, str.length() - 2);
+		}
+		return str;
 	}
 
 	// to be transfered to price
