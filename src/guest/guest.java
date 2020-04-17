@@ -1,4 +1,4 @@
-package guest_entity;
+package guest;
 import java.util.*;
 
 public class guest {

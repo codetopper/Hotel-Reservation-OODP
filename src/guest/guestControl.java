@@ -1,13 +1,13 @@
-package guest_entity;
+package guest;
 import java.util.*;
 
-public class guestManager {
+public class guestControl {
 	
 /*defining an arraylist of guest class*/	
 public static ArrayList<guest>arrayListOfGuest;
 
 /*default constructor*/
-public guestManager()
+public guestControl()
 {
 		arrayListOfGuest=new ArrayList<guest>();
 	}

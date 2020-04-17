@@ -1,13 +1,13 @@
-package guest_entity;
+package guest;
 
 import java.util.Scanner;
 
-public class guestMain {
+public class guestBoundary {
 	
 	public static void main(String args[])
 	{
 		
-		guestManager gm= new guestManager();
+		guestControl gm= new guestControl();
 		Scanner sc = new Scanner(System.in);
 		int x = -1;
 		
