@@ -23,11 +23,12 @@ public class OrderBoundary {
 			System.out.println("1. Display");
 			System.out.println("2. Create");
 			System.out.println("3. Update");
+			System.out.println("4. Reset Orders");
 			System.out.println("0. Back to Main Menu");
 			System.out.println("=====");
 			
 			// get option
-			option = AppBoundary.inIntInRange("Option: ", 0, 3);
+			option = AppBoundary.inIntInRange("Option: ", 0, 4);
 			
 			// process option
 			int choice;
@@ -68,6 +69,11 @@ public class OrderBoundary {
 					choice = AppBoundary.inIntInRange("Option: ", 1, 3);
 					
 					orderControl.update(orderId, remarks, choice);
+					System.out.println();
+					break;
+				case 4:
+					orderControl.resetOrders();
+					System.out.println("Orders are reset to default.");
 					System.out.println();
 					break;
 			}

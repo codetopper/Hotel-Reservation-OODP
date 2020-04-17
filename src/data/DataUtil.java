@@ -30,6 +30,12 @@ public class DataUtil {
 		}
 		return hotel;
 	}
+
+	public void resetHotel() {
+		Hotel hotel = new Hotel();
+		write(hotel);
+		System.out.println("Hotel is reset!");
+	}
 	
 	public void write(Object obj) {
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {

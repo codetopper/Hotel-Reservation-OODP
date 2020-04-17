@@ -5,12 +5,20 @@ import java.util.ArrayList;
 //original packages
 import data.DataUtil;
 import data.Hotel;
+import guest.Guest;
 
 public class OrderDAO {
 	
 	// load data access
 	private DataUtil dataUtil = new DataUtil();
-	
+
+	protected void resetOrders() {
+		Hotel hotel = dataUtil.readHotel();
+		ArrayList<Order> orders = new ArrayList<>();
+		hotel.setOrders(orders);
+		dataUtil.write(hotel);
+	}
+
 	// implementations
 	private Order getItemById(ArrayList<Order> orders, String id) {
 		Order orderMatchingId = null;
