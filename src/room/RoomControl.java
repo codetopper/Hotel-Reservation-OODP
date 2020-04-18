@@ -23,13 +23,13 @@ public class RoomControl {
 		return "";
 	}
 
-	public void updateStatus(String id, int choice) {
+	public String updateStatus(String id, int choice) {
 		ROOM_STATUS status = ROOM_STATUS.VACANT;
 		Room roomMatchingId = dao.getItemById(id);
 		
 		if (roomMatchingId == null) {
-			System.out.println("Cannot find room matching id.");
-			return;
+			return "Cannot find room matching id.";
+
 		}
 		
 		switch (choice) {
@@ -49,12 +49,13 @@ public class RoomControl {
 		
 		roomMatchingId.setStatus(status);
 		dao.update(roomMatchingId);
+		return id + " is now " + status.toString();
 	}
 
 	public String getAvailabilityByRoomType() {
 		ArrayList<Room> rooms = dao.getAllItem();
 		int singleCount = 0, doubleCount = 0, deluxeCount = 0, vipCount = 0;
-		String vacantRooms = "Vacant rooms:";
+		String vacantRooms = "Vacant rooms:\n";
 		String vacantSingle = "";
 		String vacantDouble = "";
 		String vacantDeluxe = "";

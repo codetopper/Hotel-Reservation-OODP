@@ -5,11 +5,19 @@ import java.util.ArrayList;
 // original package
 import data.DataUtil;
 import data.Hotel;
+import guest.Guest;
 
 public class MenuItemDAO {
 	
 	// load data access
 	private DataUtil dataUtil = new DataUtil();
+
+	protected void resetMenuItems() {
+		Hotel hotel = dataUtil.readHotel();
+		ArrayList<MenuItem> menuItems = new ArrayList<>();
+		hotel.setMenuItems(menuItems);
+		dataUtil.write(hotel);
+	}
 
 	// implementations
 	private MenuItem getItemByName(ArrayList<MenuItem> menuItems, String name) { // for internal use

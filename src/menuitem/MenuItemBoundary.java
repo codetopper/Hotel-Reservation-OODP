@@ -22,11 +22,12 @@ public class MenuItemBoundary {
 			System.out.println("2. Create");
 			System.out.println("3. Update");
 			System.out.println("4. Remove");
+			System.out.println("5. Reset Menu Items");
 			System.out.println("0. Back to Main Menu");
 			System.out.println("=====");
 			
 			// get option
-			option = AppBoundary.inIntInRange("Option: ", 0, 4);
+			option = AppBoundary.inIntInRange("Option: ", 0, 5);
 			
 			// process option
 			String name;
@@ -63,6 +64,11 @@ public class MenuItemBoundary {
 					name = scanner.nextLine();
 					
 					menuItemControl.remove(name);
+					System.out.println();
+					break;
+				case 5:
+					menuItemControl.resetMenuItems();
+					System.out.println("Menu Items are reset to default.");
 					System.out.println();
 					break;
 					

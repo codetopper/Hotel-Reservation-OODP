@@ -58,5 +58,9 @@ public class OrderControl {
 			System.out.println(order.toString());
 		}
 	}
+
+	public void resetOrders() {
+		orderDao.resetOrders();
+	}
 	
 }

@@ -27,7 +27,7 @@ public class RoomBoundary {
             System.out.println("=====");
 
             // get option
-            option = AppBoundary.inIntInRange("Option: ", 0, 4);
+            option = AppBoundary.inIntInRange("Option: ", 0, 5);
 
             // process option
             int choice;
@@ -38,7 +38,7 @@ public class RoomBoundary {
                 case 1:
                     System.out.println("Choose option:");
                     System.out.println("1. Use room id");
-                    System.out.println("2. Use guest name");
+                    System.out.println("2. Use Guest name");
                     choice = AppBoundary.inIntInRange("Option: ", 1, 2);
                     
                     switch(choice) {
@@ -65,8 +65,7 @@ public class RoomBoundary {
                     System.out.println("3. Reserved");
                     System.out.println("4. Maintenance");
                     choice = AppBoundary.inIntInRange("Option: ", 1, 4);
-                    
-                    roomControl.updateStatus(roomId, choice);
+                    System.out.println(roomControl.updateStatus(roomId, choice));
                     System.out.println();
                     break;
                 case 3:

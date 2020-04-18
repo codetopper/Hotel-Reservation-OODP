@@ -3,6 +3,8 @@ package app;
 // java apis
 import java.util.Scanner;
 // original packages
+import data.DataUtil;
+import guest.GuestBoundary;
 import menuitem.MenuItemBoundary;
 import order.OrderBoundary;
 import room.RoomBoundary;
@@ -14,6 +16,8 @@ public class AppBoundary {
 	MenuItemBoundary menuItemBoundary = new MenuItemBoundary();
 	OrderBoundary orderBoundary = new OrderBoundary();
 	RoomBoundary roomBoundary = new RoomBoundary();
+	GuestBoundary guestBoundary = new GuestBoundary();
+	DataUtil dataUtil = new DataUtil();
 	
 	public void display() {
 		int option = -1;
@@ -24,11 +28,13 @@ public class AppBoundary {
 			System.out.println("1. Menu Item");
 			System.out.println("2. Room Service Order");
 			System.out.println("3. Room Information");
+			System.out.println("4. Guest Information");
+			System.out.println("5. Reset Hotel");
 			System.out.println("0. Quit");
 			System.out.println("=====");
 			
 			// get option
-			option = inIntInRange("Option: ", 0, 3);
+			option = inIntInRange("Option: ", 0, 5);
 			
 			// process option
 			switch(option) {
@@ -41,8 +47,10 @@ public class AppBoundary {
 				case 3:
 					roomBoundary.display();
 					break;
-				default:
-					break;
+				case 4:
+					guestBoundary.display();
+				case 5:
+					dataUtil.resetHotel();
 			}
 		}
 		
