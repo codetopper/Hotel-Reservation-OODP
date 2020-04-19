@@ -1,18 +1,17 @@
-package order;
+package data;
 
 //java apis
 import java.util.ArrayList;
 //original packages
-import data.DataUtil;
-import data.Hotel;
-import guest.Guest;
+import entity_classes.Hotel;
+import entity_classes.Order;
 
 public class OrderDAO {
 	
 	// load data access
 	private DataUtil dataUtil = new DataUtil();
 
-	protected void resetOrders() {
+	public void resetOrders() {
 		Hotel hotel = dataUtil.readHotel();
 		ArrayList<Order> orders = new ArrayList<>();
 		hotel.setOrders(orders);

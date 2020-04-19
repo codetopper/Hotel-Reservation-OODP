@@ -1,22 +1,19 @@
-package app;
-
-// java apis
+package main;// java apis
 import java.util.Scanner;
 // original packages
+import boundary_classes.*;
 import data.DataUtil;
-import guest.GuestBoundary;
-import menuitem.MenuItemBoundary;
-import order.OrderBoundary;
-import room.RoomBoundary;
 
-public class AppBoundary {
+public class MainBoundary {
 	
 	public static Scanner scanner = new Scanner(System.in);
 	// sub-boundaries
-	MenuItemBoundary menuItemBoundary = new MenuItemBoundary();
-	OrderBoundary orderBoundary = new OrderBoundary();
+	RoomServiceBoundary roomServiceBoundary = new RoomServiceBoundary();
 	RoomBoundary roomBoundary = new RoomBoundary();
 	GuestBoundary guestBoundary = new GuestBoundary();
+	ReservationBoundary reservationBoundary = new ReservationBoundary();
+	CheckInBoundary checkInBoundary = new CheckInBoundary();
+	CheckOutBoundary checkOutBoundary = new CheckOutBoundary();
 	DataUtil dataUtil = new DataUtil();
 	
 	public void display() {
@@ -25,32 +22,42 @@ public class AppBoundary {
 		while (!(option == 0)) {
 			// display menu
 			System.out.println("===== Main Menu");
-			System.out.println("1. Menu Item");
-			System.out.println("2. Room Service Order");
+			System.out.println("1. Room Service");
+			System.out.println("2. Guest Information");
 			System.out.println("3. Room Information");
-			System.out.println("4. Guest Information");
-			System.out.println("5. Reset Hotel");
+			System.out.println("4. Reservation");
+			System.out.println("5. Check In");
+			System.out.println("6. Check Out");
+			System.out.println("7. Reset Hotel");
 			System.out.println("0. Quit");
 			System.out.println("=====");
 			
 			// get option
-			option = inIntInRange("Option: ", 0, 5);
+			option = inIntInRange("Option: ", 0, 7);
 			
 			// process option
 			switch(option) {
 				case 1:
-					menuItemBoundary.display();
+					roomServiceBoundary.display();
 					break;
 				case 2:
-					orderBoundary.display();
+					guestBoundary.display();
 					break;
 				case 3:
 					roomBoundary.display();
 					break;
 				case 4:
-					guestBoundary.display();
+					reservationBoundary.display();
+					break;
 				case 5:
+					checkInBoundary.display();
+					break;
+				case 6:
+					checkOutBoundary.display();
+					break;
+				case 7:
 					dataUtil.resetHotel();
+					break;
 			}
 		}
 		

@@ -1,4 +1,4 @@
-package menuitem;
+package entity_classes;
 
 // java apis
 import java.io.Serializable;

@@ -1,10 +1,13 @@
-package order;
+package control_classes;
 
 // java apis
 import java.util.ArrayList;
 // original packages
-import menuitem.MenuItem;
-import menuitem.MenuItemDAO;
+import entity_classes.MenuItem;
+import entity_classes.Order;
+import enums.ORDER_STATUS;
+import data.MenuItemDAO;
+import data.OrderDAO;
 
 public class OrderControl {
 	

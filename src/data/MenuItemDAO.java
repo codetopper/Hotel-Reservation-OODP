@@ -1,18 +1,17 @@
-package menuitem;
+package data;
 
 // java api
 import java.util.ArrayList;
 // original package
-import data.DataUtil;
-import data.Hotel;
-import guest.Guest;
+import entity_classes.Hotel;
+import entity_classes.MenuItem;
 
 public class MenuItemDAO {
 	
 	// load data access
 	private DataUtil dataUtil = new DataUtil();
 
-	protected void resetMenuItems() {
+	public void resetMenuItems() {
 		Hotel hotel = dataUtil.readHotel();
 		ArrayList<MenuItem> menuItems = new ArrayList<>();
 		hotel.setMenuItems(menuItems);

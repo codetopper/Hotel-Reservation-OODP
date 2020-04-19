@@ -1,14 +1,15 @@
-package menuitem;
+package boundary_classes;
 
 // java apis
 import java.util.Scanner;
 // original packages
-import app.AppBoundary;
+import main.MainBoundary;
+import control_classes.MenuItemControl;
 
 public class MenuItemBoundary {
 	
 	// shorten variable name
-	Scanner scanner = AppBoundary.scanner;
+	Scanner scanner = MainBoundary.scanner;
 	// load controls
 	private MenuItemControl menuItemControl = new MenuItemControl();
 	
@@ -27,7 +28,7 @@ public class MenuItemBoundary {
 			System.out.println("=====");
 			
 			// get option
-			option = AppBoundary.inIntInRange("Option: ", 0, 5);
+			option = MainBoundary.inIntInRange("Option: ", 0, 5);
 			
 			// process option
 			String name;
@@ -44,7 +45,7 @@ public class MenuItemBoundary {
 					name = scanner.nextLine();
 					System.out.printf("Enter description: ");
 					description = scanner.nextLine();
-					price = AppBoundary.inDoublePos("Enter price: ");
+					price = MainBoundary.inDoublePos("Enter price: ");
 					
 					menuItemControl.create(name, description, price);
 					System.out.println();
@@ -54,7 +55,7 @@ public class MenuItemBoundary {
 					name = scanner.nextLine();
 					System.out.printf("Enter description: ");
 					description = scanner.nextLine();
-					price = AppBoundary.inDoublePos("Enter price: ");
+					price = MainBoundary.inDoublePos("Enter price: ");
 					
 					menuItemControl.update(name, description, price);
 					System.out.println();

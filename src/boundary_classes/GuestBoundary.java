@@ -1,13 +1,17 @@
-package guest;
+package boundary_classes;
 
-import app.AppBoundary;
+import data.GuestDAO;
+import main.MainBoundary;
+import control_classes.GuestControl;
+import entity_classes.Guest;
 
 import java.util.Scanner;
 
 public class GuestBoundary {
 		
 	private GuestControl gc= new GuestControl();
-	Scanner sc = AppBoundary.scanner;
+	private GuestDAO dao = new GuestDAO();
+	Scanner sc = MainBoundary.scanner;
 
 	//attributes
 	String name;
@@ -25,48 +29,16 @@ public class GuestBoundary {
 
 		while (option != 0) {
 			System.out.println("===== Guest Menu");
-			System.out.println("1. Create");
-			System.out.println("2. Update");
-			System.out.println("3. Search");
-			System.out.println("4. Reset Guest List");
+			System.out.println("1. Update");
+			System.out.println("2. Search");
+			System.out.println("3. Reset Guest List");
 			System.out.println("0. Back to Main Menu");
 			System.out.println("=====");
 
-			option = AppBoundary.inIntInRange("Option: ", 0, 4);
+			option = MainBoundary.inIntInRange("Option: ", 0, 3);
 
-			/*to create Guest details*/
-			if (option == 1) {
-				System.out.println("Create Guest details");
-				/*takes input for the identity*/
-				System.out.print("Please enter the identity number: ");
-				identity = sc.nextLine();
-				/*takes input for the name*/
-				System.out.print("Please enter the name: ");
-				name = sc.nextLine();
-				/*takes input for the address*/
-				System.out.print("Please enter the address: ");
-				addr = sc.nextLine();
-				/*takes input for the contact number*/
-				System.out.print("Please enter the contact number: ");
-				contact = sc.nextLine();
-				/*takes input for the credit card number*/
-				System.out.print("Please enter the credit card number:");
-				card = sc.nextLine();
-				/*takes input for the country*/
-				System.out.print("Please enter the country: ");
-				country = sc.nextLine();
-				/*takes input for the nationality*/
-				System.out.print("Please enter the nationality: ");
-				nationality = sc.nextLine();
-				/*takes input for the gender*/
-				System.out.print("Please select a gender-(1)male (2)female (3)others: ");
-				genderOption = sc.nextInt();
-				System.out.println();
-				System.out.println(gc.createGuest(identity, name, addr, contact, card, country, nationality, genderOption));
-				System.out.println();
-			}
 			/*to update Guest details*/
-			if (option == 2) {
+			if (option == 1) {
 				System.out.println("Update Guest details");
 				System.out.print("Please enter the identity number: ");
 				String givenId = sc.nextLine();
@@ -83,8 +55,8 @@ public class GuestBoundary {
 						System.out.println("7. Credit card number");
 						System.out.println("8. Identity");
 						System.out.println("0. Finish update");
-						choice = AppBoundary.inIntInRange("Option: ", 0, 8);
-						Guest g = gc.dao.getItemById(givenId);
+						choice = MainBoundary.inIntInRange("Option: ", 0, 8);
+						Guest g = dao.getItemById(givenId);
 						switch (choice) {
 							/*update name*/
 							case 1:
@@ -152,13 +124,13 @@ public class GuestBoundary {
 				}
 			}
 			/*to search Guest details*/
-			if (option == 3) {
+			if (option == 2) {
 				System.out.print("Please enter the identity number: ");
 				identity = sc.nextLine();
 				System.out.print(gc.searchGuest(identity));
 			}
 
-			if (option == 4) {
+			if (option == 3) {
 				gc.resetGuestList();
 				System.out.println("Guest list is reset to default.");
 				System.out.println();
@@ -167,7 +139,7 @@ public class GuestBoundary {
 	}
 
 	private boolean validateGuest (String givenId){
-		Guest guestMatchingId = gc.dao.getItemById(givenId);
+		Guest guestMatchingId = dao.getItemById(givenId);
 
 		if (guestMatchingId == null || givenId.isEmpty() || givenId.isBlank()) {
 			return false;
@@ -175,6 +147,39 @@ public class GuestBoundary {
 		return true;
 	}
 }
+
+
+			//to create Guest details
+//			if (option == 1) {
+//					System.out.println("Create Guest details");
+//					/*takes input for the identity*/
+//					System.out.print("Please enter the identity number: ");
+//					identity = sc.nextLine();
+//					/*takes input for the name*/
+//					System.out.print("Please enter the name: ");
+//					name = sc.nextLine();
+//					/*takes input for the address*/
+//					System.out.print("Please enter the address: ");
+//					addr = sc.nextLine();
+//					/*takes input for the contact number*/
+//					System.out.print("Please enter the contact number: ");
+//					contact = sc.nextLine();
+//					/*takes input for the credit card number*/
+//					System.out.print("Please enter the credit card number:");
+//					card = sc.nextLine();
+//					/*takes input for the country*/
+//					System.out.print("Please enter the country: ");
+//					country = sc.nextLine();
+//					/*takes input for the nationality*/
+//					System.out.print("Please enter the nationality: ");
+//					nationality = sc.nextLine();
+//					/*takes input for the gender*/
+//					System.out.print("Please select a gender-(1)male (2)female (3)others: ");
+//					genderOption = sc.nextInt();
+//					System.out.println();
+//					System.out.println(gc.createGuest(identity, name, addr, contact, card, country, nationality, genderOption));
+//					System.out.println();
+//					}
 
 
 

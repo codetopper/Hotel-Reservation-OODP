@@ -1,15 +1,16 @@
-package order;
+package boundary_classes;
 
 // java apis
 import java.util.Scanner;
 // original packages
-import app.AppBoundary;
-import menuitem.MenuItemControl;
+import main.MainBoundary;
+import control_classes.OrderControl;
+import control_classes.MenuItemControl;
 
 public class OrderBoundary {
 	
 	// shorten variable name
-	private Scanner scanner = AppBoundary.scanner;
+	private Scanner scanner = MainBoundary.scanner;
 	// load controls
 	private OrderControl orderControl = new OrderControl();
 	private MenuItemControl menuItemControl = new MenuItemControl();
@@ -28,7 +29,7 @@ public class OrderBoundary {
 			System.out.println("=====");
 			
 			// get option
-			option = AppBoundary.inIntInRange("Option: ", 0, 4);
+			option = MainBoundary.inIntInRange("Option: ", 0, 4);
 			
 			// process option
 			int choice;
@@ -66,7 +67,7 @@ public class OrderBoundary {
 					System.out.println("1. Confirmed");
 					System.out.println("2. Preparing");
 					System.out.println("3. Delivered");
-					choice = AppBoundary.inIntInRange("Option: ", 1, 3);
+					choice = MainBoundary.inIntInRange("Option: ", 1, 3);
 					
 					orderControl.update(orderId, remarks, choice);
 					System.out.println();

@@ -1,0 +1,3 @@
+package enums;
+
+public enum ROOM_STATUS {VACANT, OCCUPIED, RESERVED, UNDER_MAINTENANCE}

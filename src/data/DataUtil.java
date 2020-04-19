@@ -1,5 +1,7 @@
 package data;
 
+import entity_classes.Hotel;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;

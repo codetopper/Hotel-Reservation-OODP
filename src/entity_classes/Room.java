@@ -1,8 +1,12 @@
-package room;
+package entity_classes;
+
+import enums.BED_TYPE;
+import enums.ROOM_STATUS;
+import enums.ROOM_TYPE;
 
 import java.io.Serializable;
 
-enum ROOM_STATUS {VACANT, OCCUPIED, RESERVED, UNDER_MAINTENANCE};
+;
 
 public class Room implements Serializable {
 
@@ -14,6 +18,7 @@ public class Room implements Serializable {
     private boolean hasWifi;
     private boolean hasView;
     private boolean isSmokable;
+    private double price;
 
     // constructors
     public Room(String id, ROOM_TYPE roomType, BED_TYPE bedType, boolean hasWifi, boolean hasView, boolean isSmokable) {
@@ -24,6 +29,7 @@ public class Room implements Serializable {
         this.hasWifi = hasWifi;
         this.hasView = hasView;
         this.isSmokable = isSmokable;
+        setPrice(roomType);
     }
     
     // interfaces
@@ -51,6 +57,23 @@ public class Room implements Serializable {
 
     public ROOM_STATUS getStatus() {
         return status;
+    }
+
+    private void setPrice(ROOM_TYPE type) {
+        switch(type) {
+            case SINGLE:
+                price = 50;
+                break;
+            case DOUBLE:
+                price = 80;
+                break;
+            case DELUXE:
+                price = 100;
+                break;
+            case VIP_SUITE:
+                price = 200;
+                break;
+        }
     }
 
 }

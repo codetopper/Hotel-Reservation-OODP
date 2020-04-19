@@ -1,6 +1,9 @@
-package menuitem;
+package control_classes;
 
 // java apis
+import entity_classes.MenuItem;
+import data.MenuItemDAO;
+
 import java.util.ArrayList;
 
 public class MenuItemControl {

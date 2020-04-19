@@ -1,5 +1,6 @@
-package guest;
-import room.Room;
+package control_classes;
+import entity_classes.Guest;
+import data.GuestDAO;
 
 import java.util.*;
 

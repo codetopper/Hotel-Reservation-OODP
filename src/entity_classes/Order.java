@@ -1,10 +1,10 @@
-package order;
+package entity_classes;
 
 // java apis
 import java.io.Serializable;
 import java.util.Date;
 // original packages
-import menuitem.MenuItem;
+import enums.ORDER_STATUS;
 
 public class Order implements Serializable {
 	

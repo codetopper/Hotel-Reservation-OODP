@@ -1,14 +1,15 @@
-package room;
+package boundary_classes;
 
 // java apis
 import java.util.Scanner;
 // original packages
-import app.AppBoundary;
+import main.MainBoundary;
+import control_classes.RoomControl;
 
 public class RoomBoundary {
 
     // shorten variable name
-    Scanner scanner = AppBoundary.scanner;
+    Scanner scanner = MainBoundary.scanner;
     // load control
     private RoomControl roomControl = new RoomControl();
 
@@ -19,15 +20,15 @@ public class RoomBoundary {
             // display menu
             System.out.println("===== Room Menu");
             System.out.println("1. Check availability");
-            System.out.println("2. Update");
+            System.out.println("2. Update Room Status");
             System.out.println("3. Display availability by room type");
-            System.out.println("4. Display by status");
+            System.out.println("4. Sort by status");
             System.out.println("5. Reset rooms to default");
             System.out.println("0. Back to Main Menu");
             System.out.println("=====");
 
             // get option
-            option = AppBoundary.inIntInRange("Option: ", 0, 5);
+            option = MainBoundary.inIntInRange("Option: ", 0, 5);
 
             // process option
             int choice;
@@ -39,7 +40,7 @@ public class RoomBoundary {
                     System.out.println("Choose option:");
                     System.out.println("1. Use room id");
                     System.out.println("2. Use Guest name");
-                    choice = AppBoundary.inIntInRange("Option: ", 1, 2);
+                    choice = MainBoundary.inIntInRange("Option: ", 1, 2);
                     
                     switch(choice) {
                         case 1:
@@ -64,7 +65,7 @@ public class RoomBoundary {
                     System.out.println("2. Occupied");
                     System.out.println("3. Reserved");
                     System.out.println("4. Maintenance");
-                    choice = AppBoundary.inIntInRange("Option: ", 1, 4);
+                    choice = MainBoundary.inIntInRange("Option: ", 1, 4);
                     System.out.println(roomControl.updateStatus(roomId, choice));
                     System.out.println();
                     break;

@@ -1,11 +1,7 @@
-package guest;
+package data;
 
-import data.DataUtil;
-import data.Hotel;
-import menuitem.MenuItem;
-import room.BED_TYPE;
-import room.ROOM_TYPE;
-import room.Room;
+import entity_classes.Guest;
+import entity_classes.Hotel;
 
 import java.util.ArrayList;
 
@@ -14,7 +10,7 @@ public class GuestDAO {
     // load data access
     private DataUtil dataUtil = new DataUtil();
 
-    protected void resetGuestList() {
+    public void resetGuestList() {
         Hotel hotel = dataUtil.readHotel();
         ArrayList<Guest> guests = new ArrayList<>();
         hotel.setGuests(guests);

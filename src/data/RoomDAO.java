@@ -1,10 +1,12 @@
-package room;
+package data;
 
 // java apis
 import java.util.ArrayList;
 // original packages
-import data.DataUtil;
-import data.Hotel;
+import entity_classes.Hotel;
+import entity_classes.Room;
+import enums.BED_TYPE;
+import enums.ROOM_TYPE;
 
 public class RoomDAO {
 
@@ -19,7 +21,7 @@ public class RoomDAO {
     }
     
     // implementations
-	protected void prepareDefaultRooms() {
+	public void prepareDefaultRooms() {
 		Hotel hotel = dataUtil.readHotel();
 		ArrayList<Room> rooms = new ArrayList<>();
 		

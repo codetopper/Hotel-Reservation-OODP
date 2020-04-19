@@ -1,13 +1,10 @@
-package data;
+package entity_classes;
 
 // java api
 import java.io.Serializable;
 import java.util.ArrayList;
 // original package
-import guest.Guest;
-import menuitem.MenuItem;
-import order.Order;
-import room.Room;
+
 
 // should only include arraylist
 public class Hotel implements Serializable {
@@ -17,7 +14,7 @@ public class Hotel implements Serializable {
 	ArrayList<Room> rooms;
 	ArrayList<Guest> guests;
 
-	Hotel() {
+	public Hotel() {
 		menuItems = new ArrayList<>();
 		orders = new ArrayList<>();
 		rooms = new ArrayList<>();
