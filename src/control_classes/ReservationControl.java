@@ -71,14 +71,6 @@ public class ReservationControl {
         // PRINT BILL
     }
 
-    public void printSex(int n)
-    {
-        for (int i = 0; i<n; i++)
-        {
-            System.out.println("Sex");
-        }
-    }
-
     public void expire() {
         ArrayList<Reservation> reservations = dao.getAllItem();
         Date dateNow = new Date();
