@@ -58,12 +58,16 @@ public class ReservationControl {
 		return reservation;
 	}
 	
-	public void checkOut(Reservation reservation) {
+	public void checkOut() {
+		ReservationBoundary.print("Reservation Id");
+		String reservationId = scanner.nextLine();
+		Reservation reservation = getReservation(reservationId);
 		String[] rooms = reservation.getRooms();
 		reservation.setStatus(RESERVATION_STATUS.CHECKED_OUT);
 		for (int i=0; i<rooms.length;i++) {
 			roomControl.updateStatus(rooms[i], 1);
 		}
+		dao.update(reservation);
 		// PRINT BILL
 	}
 	
@@ -97,6 +101,7 @@ public class ReservationControl {
     				roomControl.updateStatus(rooms[i], 1);
     			}
 			}
+			dao.update(reservation);
 		}
 	}
 	
@@ -106,6 +111,10 @@ public class ReservationControl {
 		Date checkInDate = null, checkOutDate = null;
 		int numAdults, numChildren;
 		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy-HHmm");
+		
+		if(isWalkIn) {
+			System.out.println("Registering and checking In walk-in...");
+		}
 		
 		Date date = new Date();
 		id = formatter.format(date).trim();
@@ -191,7 +200,7 @@ public class ReservationControl {
 		}
 		
 		
-		ReservationBoundary.print("Choose billing:\n1. Creditcard\n2. Cash\n");
+		ReservationBoundary.print("Choose billing:\n1. Creditcard\n2. Cash");
 		billing = AppBoundary.inIntInRange("Option: ", 1, 2);
 		checkInDate = new Date();
 		boolean checkIn = false;
@@ -248,10 +257,9 @@ public class ReservationControl {
 			}
 		}
 		
-		
-		
 		Reservation reservation = new Reservation(guest, id, numAdults, numChildren, status, billing, checkInDate, checkOutDate, rooms);
 		// GET ROOM PRICE!
+		dao.add(reservation);
 		ReservationBoundary.print("Reservation made.");
 		printReservation(reservation);
 	}
@@ -283,10 +291,12 @@ public class ReservationControl {
 					ReservationBoundary.print("Enter number of adults: ");
 					number = scanner.nextInt();
 					reservation.setNumAdults(number);
+					break;
 				case 2:
 					ReservationBoundary.print("Enter number of children: ");
 					number = scanner.nextInt();
 					reservation.setNumChildren(number);
+					break;
 				case 3:
 					String newRoomId, oldRoomId;
 					String[] rooms = reservation.getRooms();
@@ -302,6 +312,7 @@ public class ReservationControl {
 					reservation.setRooms(rooms);
 					roomControl.updateStatus(oldRoomId, 1);
 					roomControl.updateStatus(newRoomId, 3);
+					break;
 				case 4:
 					do {
 						ReservationBoundary.print("CheckIn (dd/MM/yyyy):");
@@ -320,6 +331,7 @@ public class ReservationControl {
 						
 					} while(!checkIn);
 					reservation.setCheckInDate(checkInDate);
+					break;
 				case 5:
 					
 					do {
@@ -338,13 +350,16 @@ public class ReservationControl {
 						
 					} while(!checkIn);
 					reservation.setCheckOutDate(checkOutDate);
+					break;
 				case 6:
 					ReservationBoundary.print("Status 1) CONFIRMED 2) IN_WAITLIST 3) CHECKED_IN 4) CHECKED_OUT 5) EXPIRED");
 					int next = AppBoundary.inIntInRange("Option: ", 1, 5);
 					RESERVATION_STATUS arr[] = RESERVATION_STATUS.values();
 					reservation.setStatus(arr[next]);
+					break;
 				}
-		}
+			}
+			dao.update(reservation);
 		}
 	}
 	
@@ -391,6 +406,7 @@ public class ReservationControl {
 					roomControl.updateStatus(rooms[i], 1);
 				}
 			}
+			dao.update(reservation);
 		}
 		else {
 			ReservationBoundary.print("You are walk-in, thus you checkIn immediately");

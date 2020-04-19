@@ -55,6 +55,7 @@ public class AppBoundary {
 				break;
 			case 5:
 				guestBoundary.display();
+				break;
 			case 6:
 				dataUtil.resetHotel();
 				break;

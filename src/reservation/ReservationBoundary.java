@@ -25,19 +25,24 @@ public class ReservationBoundary {
 			System.out.println("3. Remove reservation");
 			System.out.println("4. Print reservation");
 			System.out.println("5. Print all reservations");
+			System.out.println("6. CheckIn");
+			System.out.println("7. CheckOut");
+			System.out.println("8. Walk-in");
 			System.out.println("0. Back to Main Menu");
 			System.out.println("=====");
 			
 			// get option
-            option = AppBoundary.inIntInRange("Option: ", 0, 5);
+            option = AppBoundary.inIntInRange("Option: ", 0, 8);
     		
             switch(option) {
             case 1:
         		System.out.println("Create reservation");
         		reservationControl.createReservation(false);
+        		break;
         	case 2:
         		System.out.println("Update reservation");
         		reservationControl.updateReservation();
+        		break;
         	case 3:
         		System.out.println("Remove reservation");
         		System.out.println("Please enter reservation number: ");
@@ -51,6 +56,7 @@ public class ReservationBoundary {
         			reservationControl.removeReservation(reservation);
         			System.out.println("Reservation removed!");
         		}
+        		break;
         	case 4:
         		System.out.println("Print reservation");
         		System.out.println("Please enter reservation number: ");
@@ -61,9 +67,23 @@ public class ReservationBoundary {
         		}else {
         			System.out.println("Not a valid reservation number");
         		}
+        		break;
         	case 5:
         		System.out.println("Print all reservations");
         		reservationControl.printAllReservations();
+        		break;
+        	case 6:
+        		System.out.println("CheckIn");
+        		reservationControl.checkIn();
+        		break;
+        	case 7:
+        		System.out.println("CheckOut");
+        		reservationControl.checkOut();
+        		break;
+        	case 8:
+        		System.out.println("Walk-in");
+        		reservationControl.createReservation(true);
+        		break;
             }
 		}
 	}
