@@ -147,16 +147,9 @@ public class ReservationControl {
 			/*takes input for the gender*/
 			ReservationBoundary.print("Please select a gender-(1)male (2)female (3)others: ");
 			int genderOption = AppBoundary.inIntInRange("Option: ", 1, 3);
-			String gender="Others";
-			if(genderOption==1)
-			{
-				gender = "Male";
-			}
-			else if (genderOption==2)
-			{
-				gender = "Female";
-			}
-			guest = new Guest(identity, name, card, addr, country, gender, nationality, contact);
+
+			guestControl.createGuest(identity, name, addr, contact, card, country, nationality, genderOption);
+			guest = guestControl.searchGuest2(identity);
 		} else if (guestOption==2) {
 			ReservationBoundary.print("Enter guest identity: ");
 			String guestId = scanner.nextLine();
