@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 import boundary_classes.ReservationBoundary;
+import data.GuestDAO;
 import data.ReservationDAO;
 import data.RoomDAO;
 import entity_classes.Guest;
@@ -25,6 +26,7 @@ public class ReservationControl {
 
     private ReservationDAO dao = new ReservationDAO();
     private RoomDAO roomDao = new RoomDAO();
+    private GuestDAO guestDao = new GuestDAO();
     // Initialize attributes
     RoomControl roomControl = new RoomControl();
     GuestControl guestControl = new GuestControl();
@@ -67,6 +69,14 @@ public class ReservationControl {
             roomControl.updateStatus(rooms[i], 1);
         }
         // PRINT BILL
+    }
+
+    public void printSex(int n)
+    {
+        for (int i = 0; i<n; i++)
+        {
+            System.out.println("Sex");
+        }
     }
 
     public void expire() {
@@ -112,10 +122,23 @@ public class ReservationControl {
         Date date = new Date();
         id = formatter.format(date).trim();
         Guest guest = null;
-        ReservationBoundary.print("Guest information\n1) Create new\n2) Existing guest");
+        ReservationBoundary.print("Guest information\n1) Create new\n2) Existing guest\n");
         int guestOption = MainBoundary.inIntInRange("Option: ", 1, 2);
+        if (guestOption==2) {
+            ReservationBoundary.print("Enter guest identity: ");
+            String guestId = scanner.nextLine();
+            guest = guestDao.getItemById(guestId);
+            if (guest == null) {
+                ReservationBoundary.print("Guest " + guestId + " not found, please create a new one.\n");
+                guestOption = 1;
+            }
+            else {
+                ReservationBoundary.print("Guest " + guestId + " found!");
+                ReservationBoundary.print(guest.print()+"\n");
+            }
+        }
         if (guestOption==1) {
-            ReservationBoundary.print("Create Guest details");
+            ReservationBoundary.print("Create Guest details\n");
             /*takes input for the identity*/
             ReservationBoundary.print("Please enter the identity number: ");
             String identity = scanner.nextLine();
@@ -150,10 +173,6 @@ public class ReservationControl {
                 gender = "Female";
             }
             guest = new Guest(identity, name, card, addr, country, gender, nationality, contact);
-        } else if (guestOption==2) {
-            ReservationBoundary.print("Enter guest identity: ");
-            String guestId = scanner.nextLine();
-            guest = guestControl.searchGuest2(guestId);
         }
 
         ReservationBoundary.print("Number of adults: ");
@@ -395,7 +414,7 @@ public class ReservationControl {
             }
         }
         else {
-            ReservationBoundary.print("You are walk-in, thus you checkIn immediately");
+            ReservationBoundary.print("Walk-In guest.");
             createReservation(true);
         }
     }

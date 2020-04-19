@@ -12,8 +12,8 @@ public class MainBoundary {
 	RoomBoundary roomBoundary = new RoomBoundary();
 	GuestBoundary guestBoundary = new GuestBoundary();
 	ReservationBoundary reservationBoundary = new ReservationBoundary();
-	CheckInBoundary checkInBoundary = new CheckInBoundary();
-	CheckOutBoundary checkOutBoundary = new CheckOutBoundary();
+//	CheckInBoundary checkInBoundary = new CheckInBoundary();
+//	CheckOutBoundary checkOutBoundary = new CheckOutBoundary();
 	DataUtil dataUtil = new DataUtil();
 	
 	public void display() {
@@ -25,7 +25,7 @@ public class MainBoundary {
 			System.out.println("1. Room Service");
 			System.out.println("2. Guest Information");
 			System.out.println("3. Room Information");
-			System.out.println("4. ReservationControl");
+			System.out.println("4. Reservation");
 			System.out.println("5. Check In");
 			System.out.println("6. Check Out");
 			System.out.println("7. Reset Hotel");
@@ -50,10 +50,10 @@ public class MainBoundary {
 					reservationBoundary.display();
 					break;
 				case 5:
-					checkInBoundary.display();
+//					checkInBoundary.display();
 					break;
 				case 6:
-					checkOutBoundary.display();
+//					checkOutBoundary.display();
 					break;
 				case 7:
 					dataUtil.resetHotel();
