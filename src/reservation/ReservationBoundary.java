@@ -10,11 +10,10 @@ import room.RoomControl;
 public class ReservationBoundary {
 	
 	// shorten variable name
-	Scanner scanner = AppBoundary.scanner;
+	public static Scanner scanner = AppBoundary.scanner;
 	// load control
 	private ReservationControl reservationControl = new ReservationControl();
 	private RoomControl roomControl = new RoomControl();
-	Scanner sc = new Scanner(System.in);
 	public void display() {
 		int option = -1;
 		reservationControl.expire();
@@ -76,5 +75,9 @@ public class ReservationBoundary {
 			return false;
 		}
 		return true;
+	}
+
+	public static void print(String content) {
+		System.out.println(content);
 	}
 }
