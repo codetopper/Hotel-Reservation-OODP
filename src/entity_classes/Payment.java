@@ -1,4 +1,4 @@
-package control_classes;
+package entity_classes;
 
 public class Payment {
 }

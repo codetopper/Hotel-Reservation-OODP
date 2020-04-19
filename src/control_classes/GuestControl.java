@@ -238,6 +238,21 @@ public class GuestControl {
 			return "Guest not found!\n\n";
 	}
 
+	public Guest searchGuest2(String identity) {
+
+		ArrayList<Guest> guests = dao.getAllItem();
+
+		for (Guest guest: guests)
+		{
+			if(identity.equals(guest.getId()))
+			{
+				System.out.print("Guest found!\n");
+				return guest;
+			}
+		}
+		return new Guest();
+	}
+
 	public void resetGuestList() {
 		dao.resetGuestList();
 	}

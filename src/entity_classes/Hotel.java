@@ -13,12 +13,14 @@ public class Hotel implements Serializable {
 	ArrayList<Order> orders;
 	ArrayList<Room> rooms;
 	ArrayList<Guest> guests;
+	ArrayList<Reservation> reservations;
 
 	public Hotel() {
 		menuItems = new ArrayList<>();
 		orders = new ArrayList<>();
 		rooms = new ArrayList<>();
 		guests = new ArrayList<>();
+		reservations = new ArrayList<>();
 	}
 	
 	public ArrayList<MenuItem> getMenuItems() {
@@ -37,6 +39,10 @@ public class Hotel implements Serializable {
 		return guests;
 	}
 
+	public ArrayList<Reservation> getReservations(){
+		return reservations;
+	}
+
 	public void setRooms(ArrayList<Room> rooms) {
 		this.rooms = rooms;
 	}
@@ -51,6 +57,10 @@ public class Hotel implements Serializable {
 
 	public void setGuests(ArrayList<Guest> guests) {
 		this.guests = guests;
+	}
+
+	public void setReservations(ArrayList<Reservation> reservations) {
+		this.reservations = reservations;
 	}
 
 }

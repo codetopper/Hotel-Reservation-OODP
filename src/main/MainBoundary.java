@@ -25,7 +25,7 @@ public class MainBoundary {
 			System.out.println("1. Room Service");
 			System.out.println("2. Guest Information");
 			System.out.println("3. Room Information");
-			System.out.println("4. Reservation");
+			System.out.println("4. ReservationControl");
 			System.out.println("5. Check In");
 			System.out.println("6. Check Out");
 			System.out.println("7. Reset Hotel");

@@ -1,5 +1,6 @@
 package boundary_classes;
 
+import control_classes.CheckInControl;
 import main.MainBoundary;
 
 import java.util.Scanner;
@@ -7,7 +8,7 @@ import java.util.Scanner;
 public class CheckInBoundary {
 
     Scanner sc = MainBoundary.scanner;
-    CheckInBoundary checkInBoundary = new CheckInBoundary();
+    CheckInControl checkInControl = new CheckInControl();
 
     public void display() {
         int option = -1;
