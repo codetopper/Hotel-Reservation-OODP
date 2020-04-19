@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import guest.Guest;
 import menuitem.MenuItem;
 import order.Order;
+import reservation.Reservation;
 import room.Room;
 
 // should only include arraylist
@@ -16,12 +17,14 @@ public class Hotel implements Serializable {
 	ArrayList<Order> orders;
 	ArrayList<Room> rooms;
 	ArrayList<Guest> guests;
+	ArrayList<Reservation> reservations;
 
 	Hotel() {
 		menuItems = new ArrayList<>();
 		orders = new ArrayList<>();
 		rooms = new ArrayList<>();
 		guests = new ArrayList<>();
+		reservations = new ArrayList<>();
 	}
 	
 	public ArrayList<MenuItem> getMenuItems() {
@@ -39,6 +42,10 @@ public class Hotel implements Serializable {
 	public ArrayList<Guest> getGuests() {
 		return guests;
 	}
+	
+	public ArrayList<Reservation> getReservations(){
+		return reservations;
+	}
 
 	public void setRooms(ArrayList<Room> rooms) {
 		this.rooms = rooms;
@@ -54,6 +61,10 @@ public class Hotel implements Serializable {
 
 	public void setGuests(ArrayList<Guest> guests) {
 		this.guests = guests;
+	}
+	
+	public void setReservations(ArrayList<Reservation> reservations) {
+		this.reservations = reservations;
 	}
 
 }

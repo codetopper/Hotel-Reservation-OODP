@@ -7,12 +7,14 @@ import data.DataUtil;
 import guest.GuestBoundary;
 import menuitem.MenuItemBoundary;
 import order.OrderBoundary;
+import reservation.ReservationBoundary;
 import room.RoomBoundary;
 
 public class AppBoundary {
 	
 	public static Scanner scanner = new Scanner(System.in);
 	// sub-boundaries
+	ReservationBoundary reservationBoundary = new ReservationBoundary();
 	MenuItemBoundary menuItemBoundary = new MenuItemBoundary();
 	OrderBoundary orderBoundary = new OrderBoundary();
 	RoomBoundary roomBoundary = new RoomBoundary();
@@ -25,32 +27,35 @@ public class AppBoundary {
 		while (!(option == 0)) {
 			// display menu
 			System.out.println("===== Main Menu");
-			System.out.println("1. Menu Item");
-			System.out.println("2. Room Service Order");
-			System.out.println("3. Room Information");
-			System.out.println("4. Guest Information");
-			System.out.println("5. Reset Hotel");
+			System.out.println("1. Reservation");
+			System.out.println("2. Menu Item");
+			System.out.println("3. Room Service Order");
+			System.out.println("4. Room Information");
+			System.out.println("5. Guest Information");
+			System.out.println("6. Reset Hotel");
 			System.out.println("0. Quit");
 			System.out.println("=====");
 			
 			// get option
-			option = inIntInRange("Option: ", 0, 5);
+			option = inIntInRange("Option: ", 0, 6);
 			
 			// process option
 			switch(option) {
-				case 1:
-					menuItemBoundary.display();
-					break;
-				case 2:
-					orderBoundary.display();
-					break;
-				case 3:
-					roomBoundary.display();
-					break;
-				case 4:
-					guestBoundary.display();
-				case 5:
-					dataUtil.resetHotel();
+			case 1:
+				reservationBoundary.display();
+			case 2:
+				menuItemBoundary.display();
+				break;
+			case 3:
+				orderBoundary.display();
+				break;
+			case 4:
+				roomBoundary.display();
+				break;
+			case 5:
+				guestBoundary.display();
+			case 6:
+				dataUtil.resetHotel();
 			}
 		}
 		
