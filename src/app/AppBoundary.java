@@ -43,6 +43,7 @@ public class AppBoundary {
 			switch(option) {
 			case 1:
 				reservationBoundary.display();
+				break;
 			case 2:
 				menuItemBoundary.display();
 				break;
