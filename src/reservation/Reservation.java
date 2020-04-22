@@ -3,9 +3,11 @@ package reservation;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import guest.Guest;
+import room.Room;
 
 
 //import Hotel.Reservation.reservationStatus;
@@ -17,16 +19,14 @@ public class Reservation implements Serializable {
 	private int numChildren;
 	private int billing;
 	private String id;
-	private String[] rooms;
+	private ArrayList<Room> rooms;
 	private RESERVATION_STATUS status;
 	private Date checkInDate;
 	private Date checkOutDate;
 	private Guest guest;
-
-	DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HHmm");
 	
 	// constructors
-	public Reservation(Guest guest, String id, int numAdults, int numChildren, RESERVATION_STATUS status, int billing, Date checkInDate, Date checkOutDate, String[] rooms) {
+	public Reservation(Guest guest, String id, int numAdults, int numChildren, RESERVATION_STATUS status, int billing, Date checkInDate, Date checkOutDate, ArrayList<Room> rooms) {
 		this.guest = guest;
 		this.id = id;
 		this.numAdults = numAdults;
@@ -37,9 +37,7 @@ public class Reservation implements Serializable {
 		this.checkOutDate = checkOutDate;
 		this.rooms = rooms;
 	}
-	
-	public Reservation() {}
-	
+
 	// getters
 	public Guest getGuest() {
 		return guest;
@@ -47,33 +45,44 @@ public class Reservation implements Serializable {
 	public String getId() {
 		return id;
 	}
-	
+
 	public int getNumAdults() {
 		return numAdults;
 	}
-	
+
 	public int getNumChildren() {
 		return numChildren;
 	}
-	
+
 	public RESERVATION_STATUS getStatus() {
 		return status;
 	}
-	
+
 	public int getBilling() {
 		return billing;
 	}
-	
+
 	public Date getCheckInDate() {
 		return checkInDate;
 	}
-	
+
 	public Date getCheckOutDate() {
 		return checkOutDate;
 	}
-	
-	public String[] getRooms() {
+
+	public ArrayList<Room> getRooms() {
 		return rooms;
+	}
+
+	public String getRoomId() {
+		String roomId = "";
+		for (Room room: rooms) {
+			roomId += room.getId() + ", ";
+		}
+		if (!rooms.isEmpty()) {
+			roomId = roomId.substring(0, roomId.length() - 2);
+		}
+		return roomId;
 	}
 		
 	// setters
@@ -108,8 +117,8 @@ public class Reservation implements Serializable {
 	public void setCheckOutDate(Date checkOutDate) {
 		this.checkOutDate = checkOutDate;
 	}
-	
-	public void setRooms(String[] rooms) {
+
+	public void setRooms(ArrayList<Room> rooms) {
 		this.rooms = rooms;
 	}
 }

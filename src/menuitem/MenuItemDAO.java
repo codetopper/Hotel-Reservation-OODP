@@ -12,13 +12,6 @@ public class MenuItemDAO {
 	// load data access
 	private DataUtil dataUtil = new DataUtil();
 
-	protected void resetMenuItems() {
-		Hotel hotel = dataUtil.readHotel();
-		ArrayList<MenuItem> menuItems = new ArrayList<>();
-		hotel.setMenuItems(menuItems);
-		dataUtil.write(hotel);
-	}
-
 	// implementations
 	private MenuItem getItemByName(ArrayList<MenuItem> menuItems, String name) { // for internal use
 		MenuItem menuItemMatchingName = null;
@@ -61,6 +54,7 @@ public class MenuItemDAO {
 		MenuItem menuItemMatchingName = getItemByName(menuItems, menuItemInput.getName());
 
 		if (!(menuItemMatchingName == null)) {
+			System.out.println();
 			System.out.println("Menu item already exists.");
 			return;
 		}
@@ -69,18 +63,11 @@ public class MenuItemDAO {
 		dataUtil.write(hotel);
 	}
 
-	public void update(MenuItem menuItemInput) {
+	public void update(MenuItem menuItemInput, MenuItem menuItemUpdate) {
 		Hotel hotel = dataUtil.readHotel();
 		ArrayList<MenuItem> menuItems = hotel.getMenuItems();
 		MenuItem menuItemMatchingName = getItemByName(menuItems, menuItemInput.getName());
-
-		if (menuItemMatchingName == null) {
-			System.out.println("Cannot find menu item matching name.");
-			return;
-		}
-
-		menuItemMatchingName.setDescription(menuItemInput.getDescription());
-		menuItemMatchingName.setPrice(menuItemInput.getPrice());
+		menuItems.set(menuItems.indexOf(menuItemMatchingName), menuItemUpdate);
 		dataUtil.write(hotel);
 	}
 

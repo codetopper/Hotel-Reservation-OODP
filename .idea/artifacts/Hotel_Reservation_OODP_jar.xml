@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Hotel-Reservation-OODP:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Hotel_Reservation_OODP_jar</output-path>
+    <root id="archive" name="Hotel-Reservation-OODP.jar">
+      <element id="module-output" name="Hotel-Reservation-OODP" />
+    </root>
+  </artifact>
+</component>

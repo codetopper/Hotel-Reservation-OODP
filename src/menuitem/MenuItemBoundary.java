@@ -8,7 +8,7 @@ import app.AppBoundary;
 public class MenuItemBoundary {
 	
 	// shorten variable name
-	Scanner scanner = AppBoundary.scanner;
+	private Scanner scanner = AppBoundary.scanner;
 	// load controls
 	private MenuItemControl menuItemControl = new MenuItemControl();
 	
@@ -17,17 +17,17 @@ public class MenuItemBoundary {
 		
 		while (!(option == 0)) {
 			// display menu
-			System.out.println("===== Menu Item Menu");
-			System.out.println("1. Display");
-			System.out.println("2. Create");
-			System.out.println("3. Update");
-			System.out.println("4. Remove");
-			System.out.println("5. Reset Menu Items");
+			System.out.println();
+			System.out.println("=== Menu Items ===");
+			System.out.println("1. Display all Items");
+			System.out.println("2. Create an Item");
+			System.out.println("3. Update an Item");
+			System.out.println("4. Remove an Item");
 			System.out.println("0. Back to Main Menu");
-			System.out.println("=====");
+			System.out.println("==================");
 			
 			// get option
-			option = AppBoundary.inIntInRange("Option: ", 0, 5);
+			option = AppBoundary.inIntInRange("Option: ", 0, 4);
 			
 			// process option
 			String name;
@@ -37,7 +37,6 @@ public class MenuItemBoundary {
 			switch(option) {
 				case 1:
 					menuItemControl.displayList();
-					System.out.println();
 					break;
 				case 2:
 					System.out.printf("Enter menu item name to create: ");
@@ -45,33 +44,35 @@ public class MenuItemBoundary {
 					System.out.printf("Enter description: ");
 					description = scanner.nextLine();
 					price = AppBoundary.inDoublePos("Enter price: ");
-					
 					menuItemControl.create(name, description, price);
-					System.out.println();
 					break;
 				case 3:
 					System.out.printf("Enter menu item name to update: ");
 					name = scanner.nextLine();
+					if (!menuItemControl.validateName(name)) {
+						System.out.println();
+						System.out.println(name + " does not exist.");
+						break;
+					}
+					System.out.printf("Enter new Name: ");
+					String newName = scanner.nextLine();
 					System.out.printf("Enter description: ");
 					description = scanner.nextLine();
 					price = AppBoundary.inDoublePos("Enter price: ");
-					
-					menuItemControl.update(name, description, price);
-					System.out.println();
+					menuItemControl.update(name, newName, description, price);
 					break;
 				case 4:
 					System.out.printf("Enter menu item name to remove: ");
 					name = scanner.nextLine();
-					
+					if (!menuItemControl.validateName(name)) {
+						System.out.println();
+						System.out.println(name + " does not exist.");
+						break;
+					}
+					System.out.println();
+					System.out.println(name + " is successfully removed.");
 					menuItemControl.remove(name);
-					System.out.println();
 					break;
-				case 5:
-					menuItemControl.resetMenuItems();
-					System.out.println("Menu Items are reset to default.");
-					System.out.println();
-					break;
-					
 			}
 		}
 	}

@@ -12,13 +12,6 @@ public class OrderDAO {
 	// load data access
 	private DataUtil dataUtil = new DataUtil();
 
-	protected void resetOrders() {
-		Hotel hotel = dataUtil.readHotel();
-		ArrayList<Order> orders = new ArrayList<>();
-		hotel.setOrders(orders);
-		dataUtil.write(hotel);
-	}
-
 	// implementations
 	private Order getItemById(ArrayList<Order> orders, String id) {
 		Order orderMatchingId = null;
@@ -72,8 +65,7 @@ public class OrderDAO {
 			System.out.println("Cannot find order matching id.");
 			return;
 		}
-		
-		orderMatchingId.setRemarks(orderInput.getRemarks());
+
 		orderMatchingId.setStatus(orderInput.getStatus());
 		dataUtil.write(hotel);
 	}

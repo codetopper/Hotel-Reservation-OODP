@@ -19,7 +19,7 @@ public class MenuItem implements Serializable {
 	
 	// interfaces
 	public String toString() {
-		return String.format("%s,\t%s,\t%.2f", name, description, price);
+		return String.format("\nName: %s\nDescription: %s\nUnit Price: SGD%.2f", name, description, price);
 	}
 	
 	// getters
@@ -43,5 +43,9 @@ public class MenuItem implements Serializable {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 }

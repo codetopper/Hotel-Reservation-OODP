@@ -17,17 +17,17 @@ public class RoomBoundary {
 
         while (!(option == 0)) {
             // display menu
-            System.out.println("===== Room Menu");
-            System.out.println("1. Check availability");
-            System.out.println("2. Update");
-            System.out.println("3. Display availability by room type");
-            System.out.println("4. Display by status");
-            System.out.println("5. Reset rooms to default");
+            System.out.println();
+            System.out.println("=== Room Information ===");
+            System.out.println("1. Check Room Details");
+            System.out.println("2. Update Room Status");
+            System.out.println("3. Display Vacant Rooms by Room Type");
+            System.out.println("4. Sort Rooms by Status");
             System.out.println("0. Back to Main Menu");
-            System.out.println("=====");
+            System.out.println("========================");
 
             // get option
-            option = AppBoundary.inIntInRange("Option: ", 0, 5);
+            option = AppBoundary.inIntInRange("Option: ", 0, 4);
 
             // process option
             int choice;
@@ -37,49 +37,53 @@ public class RoomBoundary {
             switch(option) {
                 case 1:
                     System.out.println("Choose option:");
-                    System.out.println("1. Use room id");
-                    System.out.println("2. Use Guest name");
+                    System.out.println("1. Use Room ID");
+                    System.out.println("2. Use Guest Name");
                     choice = AppBoundary.inIntInRange("Option: ", 1, 2);
-                    
                     switch(choice) {
                         case 1:
-                            System.out.printf("Room id: ");
+                            System.out.printf("Room ID: ");
                             roomId = scanner.nextLine();
+                            if (!roomControl.validateRoomId(roomId)) {
+                                System.out.println();
+                                System.out.println("There is no Room " + roomId + ".");
+                                break;
+                            }
+                            System.out.println();
                             System.out.println(roomControl.getAvailabilityByRoomId(roomId));
                             break;
                         case 2:
-                            System.out.printf("Guest name: ");
+                            System.out.printf("Guest Name: ");
                             customerName = scanner.nextLine();
+                            System.out.println();
                             System.out.println(roomControl.getAvailabilityByGuestName(customerName));
                             break;
                     }
-                    
-                    System.out.println();
                     break;
                 case 2:
                     System.out.printf("Enter room id to update: ");
                     roomId = scanner.nextLine();
+                    if (!roomControl.validateRoomId(roomId)) {
+                        System.out.println();
+                        System.out.println("There is no Room " + roomId + ".");
+                        break;
+                    }
                     System.out.println("Choose status:");
                     System.out.println("1. Vacant");
                     System.out.println("2. Occupied");
                     System.out.println("3. Reserved");
-                    System.out.println("4. Maintenance");
+                    System.out.println("4. Under Maintenance");
                     choice = AppBoundary.inIntInRange("Option: ", 1, 4);
-                    System.out.println(roomControl.updateStatus(roomId, choice));
                     System.out.println();
+                    System.out.println(roomControl.updateStatus(roomId, choice));
                     break;
                 case 3:
-                    System.out.println(roomControl.getAvailabilityByRoomType());
                     System.out.println();
+                    System.out.println(roomControl.getAvailabilityByRoomType());
                     break;
                 case 4:
+                    System.out.println();
                     System.out.println(roomControl.getByStatus());
-                    System.out.println();
-                    break;
-                case 5:
-                    roomControl.resetRooms();
-                    System.out.println("Room is reset to default.");
-                    System.out.println();
                     break;
             }
         }

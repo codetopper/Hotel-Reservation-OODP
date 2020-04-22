@@ -1,8 +1,10 @@
 package reservation;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import app.AppBoundary;
+import room.Room;
 import room.RoomControl;
 
 
@@ -13,91 +15,84 @@ public class ReservationBoundary {
 	public static Scanner scanner = AppBoundary.scanner;
 	// load control
 	private ReservationControl reservationControl = new ReservationControl();
+	private ReservationDAO dao = new ReservationDAO();
 	private RoomControl roomControl = new RoomControl();
 	public void display() {
 		int option = -1;
 		reservationControl.expire();
 		while(option!=0) {
 			// display menu
-			System.out.println("===== Reservation Menu");
-			System.out.println("1. Create reservation");
-			System.out.println("2. Update reservation");
-			System.out.println("3. Remove reservation");
-			System.out.println("4. Print reservation");
-			System.out.println("5. Print all reservations");
-			System.out.println("6. CheckIn");
-			System.out.println("7. CheckOut");
-			System.out.println("8. Walk-in");
+			System.out.println();
+			System.out.println("=== Reservations ===");
+			System.out.println("1. Create a Reservation");
+			System.out.println("2. Update a Reservation");
+			System.out.println("3. Remove a Reservation");
+			System.out.println("4. Print a Reservation");
+			System.out.println("5. Print all Reservations");
+			System.out.println("6. Check In");
+			System.out.println("7. Check Out");
 			System.out.println("0. Back to Main Menu");
-			System.out.println("=====");
+			System.out.println("====================");
 			
 			// get option
-            option = AppBoundary.inIntInRange("Option: ", 0, 8);
+            option = AppBoundary.inIntInRange("Option: ", 0, 7);
     		
             switch(option) {
             case 1:
-        		System.out.println("Create reservation");
         		reservationControl.createReservation(false);
         		break;
         	case 2:
-        		System.out.println("Update reservation");
         		reservationControl.updateReservation();
         		break;
         	case 3:
-        		System.out.println("Remove reservation");
-        		System.out.println("Please enter reservation number: ");
+        		System.out.print("Please enter a Reservation ID: ");
         		String reservationId = scanner.nextLine();
         		if(validateReservation(reservationId)) {
-        			Reservation reservation = reservationControl.getReservation(reservationId);
-        			String[] rooms = reservation.getRooms();
-        			for(int k=0; k<rooms.length;k++) {
-        				roomControl.updateStatus(rooms[k],1);
+        			Reservation reservation = dao.getItemById(reservationId);
+					ArrayList<Room> rooms = reservation.getRooms();
+        			for(int k=0; k<rooms.size();k++) {
+        				roomControl.updateStatus(rooms.get(k).getId(),1);
         			}
         			reservationControl.removeReservation(reservation);
-        			System.out.println("Reservation removed!");
+        			System.out.println();
+        			System.out.println("Reservation is removed!");
+					break;
         		}
+				System.out.println();
+				System.out.println("Reservation ID " + reservationId + " does not exist.");
         		break;
         	case 4:
-        		System.out.println("Print reservation");
-        		System.out.println("Please enter reservation number: ");
+        		System.out.print("Please enter a Reservation ID: ");
         		reservationId = scanner.nextLine();
+				System.out.println();
         		if(validateReservation(reservationId)) {
-        			Reservation reservation = reservationControl.getReservation(reservationId);
+        			Reservation reservation = dao.getItemById(reservationId);
         			reservationControl.printReservation(reservation);
         		}else {
-        			System.out.println("Not a valid reservation number");
+					System.out.println("Reservation ID " + reservationId + " does not exist.");
         		}
         		break;
         	case 5:
-        		System.out.println("Print all reservations");
         		reservationControl.printAllReservations();
         		break;
         	case 6:
-        		System.out.println("CheckIn");
         		reservationControl.checkIn();
         		break;
         	case 7:
-        		System.out.println("CheckOut");
-        		reservationControl.checkOut();
-        		break;
-        	case 8:
-        		System.out.println("Walk-in");
-        		reservationControl.createReservation(true);
+				System.out.print("Please enter the Guest ID: ");
+				String guestId = scanner.nextLine();
+        		reservationControl.checkOut(guestId);
         		break;
             }
 		}
 	}
 	
 	private boolean validateReservation (String givenId){
-		Reservation reservationMatchingId = reservationControl.getReservation(givenId);
+		Reservation reservationMatchingId = dao.getItemById(givenId);
 
 		if (reservationMatchingId == null || givenId.isEmpty()) {
 			return false;
 		}
 		return true;
-	}
-
-	public static void print(String content) {
-		System.out.println(content);
 	}
 }

@@ -34,6 +34,7 @@ public class DataUtil {
 	public void resetHotel() {
 		Hotel hotel = new Hotel();
 		write(hotel);
+		System.out.println();
 		System.out.println("Hotel is reset!");
 	}
 	
