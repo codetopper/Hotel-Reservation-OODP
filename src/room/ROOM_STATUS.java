@@ -1,3 +1,0 @@
-package room;
-
-public enum ROOM_STATUS {VACANT, OCCUPIED, RESERVED, UNDER_MAINTENANCE}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="04a9eb3e-f3d6-49f1-8834-8b767dcd9506" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1an0W271nVq6oVX3iMSihRx10T5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/NTU/y2s2/OODP/Project/Hotel-Reservation-OODP" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="entities.enums" />
+      <recent name="enums" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ZY\Desktop\Hotel_Reservation_Payment_System\src\Main" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.Main" />
+      <module name="Hotel_Reservation_Payment_System" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="04a9eb3e-f3d6-49f1-8834-8b767dcd9506" name="Default Changelist" comment="" />
+      <created>1587356078212</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587356078212</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2334" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587358664090">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2334" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1587358664090" />
+    <state x="2685" y="232" key="#com.intellij.ide.util.MemberChooser" timestamp="1587375523957">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2685" y="232" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1587375523957" />
+    <state x="2609" y="315" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1587535596011">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2609" y="315" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1587535596011" />
+    <state x="2584" y="201" key="#com.intellij.refactoring.encapsulateFields.EncalpsulateFieldsDialog" timestamp="1587379735031">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2584" y="201" key="#com.intellij.refactoring.encapsulateFields.EncalpsulateFieldsDialog/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1587379735031" />
+    <state x="2660" y="283" key="FileChooserDialogImpl" timestamp="1587537274200">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2660" y="283" key="FileChooserDialogImpl/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1587537274200" />
+    <state width="1877" height="369" key="GridCell.Tab.0.bottom" timestamp="1587537564264">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="369" key="GridCell.Tab.0.bottom/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1587537564264" />
+    <state width="1877" height="369" key="GridCell.Tab.0.center" timestamp="1587537564264">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="369" key="GridCell.Tab.0.center/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1587537564264" />
+    <state width="1877" height="369" key="GridCell.Tab.0.left" timestamp="1587537564263">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="369" key="GridCell.Tab.0.left/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1587537564263" />
+    <state width="1877" height="369" key="GridCell.Tab.0.right" timestamp="1587537564264">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="369" key="GridCell.Tab.0.right/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1587537564264" />
+    <state x="2360" y="102" key="SettingsEditor" timestamp="1587535731076">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2360" y="102" key="SettingsEditor/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1587535731076" />
+    <state x="2543" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1587387963042">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2543" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1587387963042" />
+  </component>
+</project>
