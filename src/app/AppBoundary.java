@@ -26,15 +26,16 @@ public class AppBoundary {
 		
 		while (!(option == 0)) {
 			// display menu
-			System.out.println("===== Main Menu");
-			System.out.println("1. Reservation");
-			System.out.println("2. Menu Item");
+			System.out.println();
+			System.out.println("=== Main Menu ===");
+			System.out.println("1. Reservations");
+			System.out.println("2. Menu Items");
 			System.out.println("3. Room Service Order");
 			System.out.println("4. Room Information");
 			System.out.println("5. Guest Information");
 			System.out.println("6. Reset Hotel");
 			System.out.println("0. Quit");
-			System.out.println("=====");
+			System.out.println("=================");
 			
 			// get option
 			option = inIntInRange("Option: ", 0, 6);
@@ -86,7 +87,7 @@ public class AppBoundary {
 		double input;
 		
 		try {
-			System.out.printf(message);
+			System.out.print(message);
 			input = Double.parseDouble(scanner.nextLine());
 		}
 		catch (Exception e) {

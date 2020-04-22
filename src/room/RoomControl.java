@@ -11,11 +11,7 @@ public class RoomControl {
 	public String getAvailabilityByRoomId(String id) {
 		Room roomMatchingId = dao.getItemById(id);
 		
-		if (roomMatchingId == null) {
-			return "Cannot find room matching id.";
-		}
-		
-		return String.format("Room is: %s\n", roomMatchingId.getStatus());
+		return roomMatchingId.roomDetails();
 	}
 	
 	public String getAvailabilityByGuestName(String name) {
@@ -28,7 +24,7 @@ public class RoomControl {
 		Room roomMatchingId = dao.getItemById(id);
 		
 		if (roomMatchingId == null) {
-			return "Cannot find room matching id.";
+			return "There is no Room " + id + ".";
 
 		}
 		
@@ -49,18 +45,33 @@ public class RoomControl {
 		
 		roomMatchingId.setStatus(status);
 		dao.update(roomMatchingId);
-		return id + " is now " + status.toString();
+		return id + " is now " + status.toString() + ".";
 	}
 
 	public String getAvailabilityByRoomType() {
 		ArrayList<Room> rooms = dao.getAllItem();
 		int singleCount = 0, doubleCount = 0, deluxeCount = 0, vipCount = 0;
+		int singleTotal = 0, doubleTotal = 0, deluxeTotal = 0, vipTotal = 0;
 		String vacantRooms = "Vacant rooms:\n";
 		String vacantSingle = "";
 		String vacantDouble = "";
 		String vacantDeluxe = "";
 		String vacantVIP = "";
 		for (Room room : rooms) {
+			switch(room.getRoomType()) {
+				case SINGLE:
+					singleTotal++;
+					break;
+				case DOUBLE:
+					doubleTotal++;
+					break;
+				case DELUXE:
+					deluxeTotal++;
+					break;
+				case VIP_SUITE:
+					vipTotal++;
+					break;
+			}
 			if (room.isAvailable()) {
 				switch (room.getRoomType()) {
 				case SINGLE:
@@ -84,11 +95,9 @@ public class RoomControl {
 				}
 			}
 		}
-		// the number of rooms should not be hard coded here
-		// because the number of rooms should change according to the functional requirements
-		return vacantRooms + "\nSingle: " + singleCount + " out of 20\n\t" + removeLastComma(vacantSingle) + "\nDouble: " + doubleCount
-				+ " out of 20\n\t" + removeLastComma(vacantDouble) + "\nDeluxe: " + deluxeCount + " out of 7\n\t" + removeLastComma(vacantDeluxe)
-				+ "\nVIP: " + vipCount + " out of 1\n\t" + removeLastComma(vacantVIP);
+		return "Single: " + singleCount + " out of " + singleTotal + " vacant.\n\t" + removeLastComma(vacantSingle) + "\nDouble: " + doubleCount
+				+ " out of " + doubleTotal + " vacant.\n\t" + removeLastComma(vacantDouble) + "\nDeluxe: " + deluxeCount + " out of " + deluxeTotal + " vacant.\n\t" + removeLastComma(vacantDeluxe)
+				+ "\nVIP: " + vipCount + " out of " + vipTotal + " vacant.\n\t" + removeLastComma(vacantVIP);
 	}
 
 	public String getByStatus() {
@@ -126,25 +135,13 @@ public class RoomControl {
 		return str;
 	}
 
-	public void resetRooms() {
-		dao.prepareDefaultRooms();
-	}
+	public boolean validateRoomId(String id) {
+		Room roomMatchingId = dao.getItemById(id);
 
-	// to be transfered to price
-//    public String getRoomDetails(String id) {
-//        for (Hotel.Room room : rooms) {
-//            if (room.getRoomId().equals(id)) {
-//                String description = "Hotel.Room ID:\t" + room.getRoomId() + "\n" +
-//                        "Hotel.Room Status:\t" + room.getStatus() + "\n" +
-//                        "Hotel.Room Type:\t" + room.getRoomType() + "\n" +
-//                        "Bed Type:\t" + room.getBedType() + "\n" +
-//                        "Has Wifi:\t" + room.isHasWifi() + "\n" +
-//                        "Has View:\t" + room.isHasView() + "\n" +
-//                        "Smoking Allowed:\t" + room.isSmokable();
-//                return description;
-//            }
-//        }
-//        return "Hotel.Room does not exist.";
-//    }
+		if (roomMatchingId == null) {
+			return false;
+		}
+		return true;
+	}
 
 }
