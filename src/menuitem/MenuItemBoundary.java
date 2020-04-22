@@ -8,7 +8,7 @@ import app.AppBoundary;
 public class MenuItemBoundary {
 	
 	// shorten variable name
-	Scanner scanner = AppBoundary.scanner;
+	private Scanner scanner = AppBoundary.scanner;
 	// load controls
 	private MenuItemControl menuItemControl = new MenuItemControl();
 	
