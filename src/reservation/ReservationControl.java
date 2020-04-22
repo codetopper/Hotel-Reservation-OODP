@@ -234,7 +234,7 @@ public class ReservationControl {
 		System.out.println();
 		if(!isWalkIn) {
 			do {
-				System.out.print("Check In (dd/MM/yyyy):");
+				System.out.print("Check In (dd/MM/yyyy): ");
 				try {
 					checkInDate = (Date) formatter.parse(scanner.nextLine()+"-1500");
 					Date dateNow = new Date();
@@ -248,13 +248,13 @@ public class ReservationControl {
 				}
 				
 			} while(!checkIn);
-			System.out.println("Check In time is from 15:00");
+			System.out.println("Check In time is from 15:00.");
 		}
 		
 		checkIn = false;
 		
 		do {
-			System.out.print("Check Out (dd/MM/yyyy):");
+			System.out.print("Check Out (dd/MM/yyyy): ");
 			try {
 				checkOutDate = (Date) formatter.parse(scanner.nextLine()+"-1200");
 				Date dateNow = new Date();
@@ -268,7 +268,7 @@ public class ReservationControl {
 			}
 			
 		} while(!checkIn);
-		System.out.println("Check Out time is until 12:00 noon");
+		System.out.println("Check Out time is until 12:00 noon.");
 		System.out.println();
 
 		RESERVATION_STATUS status = RESERVATION_STATUS.IN_WAITLIST;

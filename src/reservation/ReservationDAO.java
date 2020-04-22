@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import data.DataUtil;
 import data.Hotel;
+import room.Room;
 
 public class ReservationDAO {
 	
@@ -55,5 +56,20 @@ public class ReservationDAO {
             }
         }
         dataUtil.write(hotel);
+    }
+
+    public String getIdByRoom(String roomId) {
+        Reservation reservationMatchingId;
+        ArrayList<Reservation> reservations = getAllItem();
+
+        for (Reservation reservation : reservations) {
+            for (Room room: reservation.getRooms()) {
+                if (room.getId().equals(roomId)) {
+                    reservationMatchingId = reservation;
+                    return reservationMatchingId.getId();
+                }
+            }
+        }
+        return null;
     }
 }

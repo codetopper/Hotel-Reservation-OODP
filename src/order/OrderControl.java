@@ -5,27 +5,44 @@ import java.util.ArrayList;
 // original packages
 import menuitem.MenuItem;
 import menuitem.MenuItemDAO;
+import reservation.Reservation;
+import reservation.ReservationDAO;
+import room.ROOM_STATUS;
+import room.RoomDAO;
 
 public class OrderControl {
 	
 	// load daos
 	private OrderDAO orderDao = new OrderDAO();
 	private MenuItemDAO menuItemDao = new MenuItemDAO();
+	private ReservationDAO reservationDAO = new ReservationDAO();
+	private RoomDAO roomDAO = new RoomDAO();
 	
 	// interfaces
-	public void create(String menuItemName, String remarks) {
+	public void create(String menuItemName, int quantity, String remarks, String roomId) {
 		MenuItem menuItemMatchingName = menuItemDao.getItemByName(menuItemName);
-		
+
+		if (roomDAO.getItemById(roomId)==null) {
+			System.out.println("Room " + roomId + " does not exist.");
+			return;
+		}
+
 		if (menuItemMatchingName == null) {
 			System.out.println("Cannot find menu item matching name.");
 			return;
 		}
-		
-		Order order = new Order(menuItemMatchingName, remarks);
-		orderDao.add(order);
+		String reservationId = reservationDAO.getIdByRoom(roomId);
+
+		if (roomDAO.getItemById(roomId).getStatus() == ROOM_STATUS.OCCUPIED) {
+			Order order = new Order(menuItemMatchingName, quantity, remarks, roomId, reservationId);
+			orderDao.add(order);
+		}
+		else {
+			System.out.println("Room is not occupied!");
+		}
 	}
 	
-	public void update(String id, String remarks, int choice) {
+	public void update(String id, int choice) {
 		ORDER_STATUS status = ORDER_STATUS.CONFIRMED;
 		Order orderMatchingId = orderDao.getItemById(id);
 		
@@ -44,9 +61,11 @@ public class OrderControl {
 			case 3:
 				status = ORDER_STATUS.DELIVERED;
 				break;
+			case 4:
+				status = ORDER_STATUS.CANCELLED;
+				break;
 		}
-		
-		orderMatchingId.setRemarks(remarks);
+
 		orderMatchingId.setStatus(status);
 		orderDao.update(orderMatchingId);
 	}
@@ -58,9 +77,4 @@ public class OrderControl {
 			System.out.println(order.toString());
 		}
 	}
-
-	public void resetOrders() {
-		orderDao.resetOrders();
-	}
-	
 }

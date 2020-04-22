@@ -72,8 +72,7 @@ public class OrderDAO {
 			System.out.println("Cannot find order matching id.");
 			return;
 		}
-		
-		orderMatchingId.setRemarks(orderInput.getRemarks());
+
 		orderMatchingId.setStatus(orderInput.getStatus());
 		dataUtil.write(hotel);
 	}

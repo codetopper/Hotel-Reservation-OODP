@@ -12,21 +12,25 @@ public class Order implements Serializable {
 	
 	// attributes
 	private String id;
-	private MenuItem menuItem;
 	private String date;
-	private String remarks;
+	private MenuItem menuItem;
+	private String roomId;
+	private int quantity;
 	private ORDER_STATUS status;
+	private String reservationId;
+	private String remarks;
 	
 	// constructors
-	public Order(MenuItem menuItem, String remarks) {
+	public Order(MenuItem menuItem, int quantity, String remarks, String roomId, String reservationId) {
 		this.id = String.valueOf(nextId());
-		
+		this.remarks = remarks;
 		Date date = new Date();
 		this.date = date.toString();
-
+		this.roomId = roomId;
 		this.menuItem = menuItem;
-		this.remarks = remarks;
+		this.quantity = quantity;
 		this.status = ORDER_STATUS.CONFIRMED;
+		this.reservationId = reservationId;
 	}
 	
 	// implementations
@@ -35,30 +39,39 @@ public class Order implements Serializable {
 		return counter;
 	}
 	
-	// interfaces
+	// getters
 	public String getId() {
 		return id;
 	}
-	
-	public String getRemarks() {
-		return remarks;
+
+	public int getQuantity() {
+		return quantity;
 	}
-	
+
+	public String getReservationId() {
+		return reservationId;
+	}
+
 	public ORDER_STATUS getStatus() {
 		return status;
 	}
-	
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
+
+	public MenuItem getMenuItem() {
+		return menuItem;
 	}
-	
+
+	// setters
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 	public void setStatus(ORDER_STATUS status) {
 		this.status = status;
 	}
-	
-	// for testing purpose
+
+	//interface
 	public String toString() {
-		return String.format("%s,\t%s,\t%s,\t%s,\t%s", id, menuItem.toString(), date, remarks, String.valueOf(status));
+		return String.format("Order %s\n%s\nDate: %s\nQuantity: %s\nStatus: %s\nRoom: %s\nRemarks: %s\nReservation ID: %s", id, menuItem.toString(), date, quantity, status, roomId, remarks, reservationId);
 	}
 
 }
