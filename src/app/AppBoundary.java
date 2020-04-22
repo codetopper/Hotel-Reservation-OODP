@@ -62,7 +62,7 @@ public class AppBoundary {
 				break;
 			}
 		}
-		
+		System.out.println();
 		System.out.println("Session has ended.");
 	}
 	

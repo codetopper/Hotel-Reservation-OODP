@@ -1,11 +1,15 @@
 package room;
 
+import reservation.Reservation;
+import reservation.ReservationDAO;
+
 import java.util.ArrayList;
 
 public class RoomControl {
 
 	// attributes
 	private RoomDAO dao = new RoomDAO();
+	private ReservationDAO reservationDAO = new ReservationDAO();
 
 	// interfaces
 	public String getAvailabilityByRoomId(String id) {
@@ -15,8 +19,17 @@ public class RoomControl {
 	}
 	
 	public String getAvailabilityByGuestName(String name) {
-		// to be implemented i guess?
-		return "";
+		ArrayList<Reservation> reservations = reservationDAO.getAllItem();
+		String roomInfo = "";
+		for (Reservation reservation: reservations) {
+			if (reservation.getGuest().getName().equals(name)) {
+				for (Room room: reservation.getRooms()) {
+					roomInfo += room.roomDetails();
+				}
+				return roomInfo;
+			}
+		}
+		return name + " does not have a reservation currently.";
 	}
 
 	public String updateStatus(String id, int choice) {

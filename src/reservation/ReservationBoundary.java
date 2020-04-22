@@ -31,12 +31,11 @@ public class ReservationBoundary {
 			System.out.println("5. Print all Reservations");
 			System.out.println("6. Check In");
 			System.out.println("7. Check Out");
-			System.out.println("8. Walk-In");
 			System.out.println("0. Back to Main Menu");
 			System.out.println("====================");
 			
 			// get option
-            option = AppBoundary.inIntInRange("Option: ", 0, 8);
+            option = AppBoundary.inIntInRange("Option: ", 0, 7);
     		
             switch(option) {
             case 1:
@@ -83,9 +82,6 @@ public class ReservationBoundary {
 				System.out.print("Please enter the Guest ID: ");
 				String guestId = scanner.nextLine();
         		reservationControl.checkOut(guestId);
-        		break;
-        	case 8:
-        		reservationControl.createReservation(true);
         		break;
             }
 		}

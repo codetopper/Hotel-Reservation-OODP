@@ -13,6 +13,7 @@ import app.AppBoundary;
 import guest.Guest;
 import guest.GuestControl;
 import guest.GuestDAO;
+import payment.PaymentController;
 import room.*;
 
 public class ReservationControl {
@@ -55,6 +56,7 @@ public class ReservationControl {
 	}
 	
 	public void checkOut(String guestId) {
+		PaymentController paymentController = new PaymentController();
 		ArrayList<Reservation> reservations = dao.getAllItem();
 		Reservation reservation = null;
 		for (Reservation rsv: reservations) {
@@ -80,7 +82,7 @@ public class ReservationControl {
 			roomControl.updateStatus(rooms.get(i).getId(), 1);
 		}
 		dao.update(reservation);
-		// PRINT BILL
+		paymentController.payment(reservation);
 	}
 	
 	public void expire() {
@@ -181,10 +183,11 @@ public class ReservationControl {
 				{
 					gender = "Female";
 				}
+				System.out.println();
 				String print = guestController.createGuest(identity, name, addr, contact, card, country, nationality, genderOption);
 				guest = new Guest (identity, name, addr, contact, card, country, nationality, gender);
-				System.out.println();
 				System.out.println(print);
+				System.out.println();
 				if (print.equals("Guest already exists.") || print.equals("Guest is created!")) {
 					guestCreated = true;
 				}
@@ -291,6 +294,8 @@ public class ReservationControl {
 		dao.add(reservation);
 		System.out.print("Reservation made.");
 		printReservation(reservation);
+		PaymentController paymentController = new PaymentController();
+		paymentController.printRoomInvoice(reservation);
 	}
 	
 
@@ -397,7 +402,7 @@ public class ReservationControl {
 	
 	
 	public void checkIn() {
-		System.out.println("1) Reserved\n2)Walk-in");
+		System.out.println("1) Reserved\n2) Walk-in");
 		int choice = AppBoundary.inIntInRange("Option: ", 1, 2);
 		if(choice==1) {
 			System.out.print("Reservation Id");

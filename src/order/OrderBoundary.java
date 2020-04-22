@@ -48,7 +48,7 @@ public class OrderBoundary {
 					System.out.println();
 					System.out.println("Menu:");
 					if (menuItemDAO.getAllItem().isEmpty()) {
-						System.out.printf("There are no items available.");
+						System.out.println("There are no items available.");
 						break;
 					}
 					menuItemControl.displayList();
