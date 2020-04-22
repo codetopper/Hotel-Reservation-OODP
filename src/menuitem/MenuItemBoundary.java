@@ -8,7 +8,7 @@ import app.AppBoundary;
 public class MenuItemBoundary {
 	
 	// shorten variable name
-	Scanner scanner = AppBoundary.scanner;
+	private Scanner scanner = AppBoundary.scanner;
 	// load controls
 	private MenuItemControl menuItemControl = new MenuItemControl();
 	
@@ -67,7 +67,7 @@ public class MenuItemBoundary {
 					System.out.println();
 					break;
 				case 5:
-					menuItemControl.resetMenuItems();
+					menuItemControl.reset();
 					System.out.println("Menu Items are reset to default.");
 					System.out.println();
 					break;

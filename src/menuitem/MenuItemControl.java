@@ -31,7 +31,7 @@ public class MenuItemControl {
 		}
 	}
 
-	public void resetMenuItems() {
-		dao.resetMenuItems();
+	public void reset() {
+		dao.reset();
 	}
 }

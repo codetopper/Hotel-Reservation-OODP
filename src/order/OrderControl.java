@@ -59,8 +59,8 @@ public class OrderControl {
 		}
 	}
 
-	public void resetOrders() {
-		orderDao.resetOrders();
+	public void reset() {
+		orderDao.reset();
 	}
 	
 }

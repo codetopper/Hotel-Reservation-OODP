@@ -72,7 +72,7 @@ public class OrderBoundary {
 					System.out.println();
 					break;
 				case 4:
-					orderControl.resetOrders();
+					orderControl.reset();
 					System.out.println("Orders are reset to default.");
 					System.out.println();
 					break;
