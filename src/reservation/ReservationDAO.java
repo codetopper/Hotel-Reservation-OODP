@@ -9,13 +9,6 @@ public class ReservationDAO {
 	
 	// load data access
     private static DataUtil dataUtil = new DataUtil();
-
-    protected void resetReservationList() {
-        Hotel hotel = dataUtil.readHotel();
-        ArrayList<Reservation> reservations = new ArrayList<>();
-        hotel.setReservations(reservations);
-        dataUtil.write(hotel);
-    }
     
     public void removeReservation(Reservation reservation) {
     	Hotel hotel = dataUtil.readHotel();
