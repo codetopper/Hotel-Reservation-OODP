@@ -6,8 +6,6 @@ public class GuestControl {
 	GuestDAO dao = new GuestDAO();
 
 	/*declaring the attributes*/
-	String invalid = "0123456789+-*/()[]{}";
-
 	/*creating Guest details*/
 	/*We take the input from the user for the corresponding fields*/
 	/*if the input is empty, we output "sorry input not entered"*/
@@ -20,15 +18,15 @@ public class GuestControl {
 		{
 			return "Invalid gender.  Guest is not created. Please enter 1, 2 or 3.";
 		}
-		if(name.contains(invalid))
+		if(name.matches(".*\\d.*"))
 		{
 			return "Invalid name. Guest is not created. Please use alphabets only.";
 		}
-		if(country.contains(invalid))
+		if(country.matches(".*\\d.*"))
 		{
 			return "Invalid country. Guest is not created. Please use alphabets only.";
 		}
-		if(nationality.contains(invalid))
+		if(nationality.matches(".*\\d.*"))
 		{
 			return "Invalid nationality. Guest is not created. Please use alphabets only.";
 		}
