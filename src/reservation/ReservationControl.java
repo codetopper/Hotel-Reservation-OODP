@@ -405,8 +405,13 @@ public class ReservationControl {
 		System.out.println("1) Reserved\n2) Walk-in");
 		int choice = AppBoundary.inIntInRange("Option: ", 1, 2);
 		if(choice==1) {
-			System.out.print("Reservation Id");
+			System.out.print("Reservation Id: ");
 			String reservationId = scanner.nextLine();
+			if (!validateReservation(reservationId)) {
+				System.out.println();
+				System.out.println("Reservation Id " + reservationId + " does not exist.");
+				return;
+			}
 			Reservation reservation = dao.getItemById(reservationId);
 			
 			Date dateNow = new Date();
