@@ -141,7 +141,7 @@ public class RoomControl {
 				+ "\nUnder Maintenance:\n\t" + removeLastComma(underMaintenance);
 	}
 
-	public String removeLastComma(String str) {
+	private String removeLastComma(String str) {
 		if (str != null && !str.isBlank() && !str.isEmpty()) {
 			str = str.substring(0, str.length() - 2);
 		}

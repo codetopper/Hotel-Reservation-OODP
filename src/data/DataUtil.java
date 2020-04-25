@@ -31,13 +31,15 @@ public class DataUtil {
 		return hotel;
 	}
 
+	// reset hotel to default
 	public void resetHotel() {
 		Hotel hotel = new Hotel();
 		write(hotel);
 		System.out.println();
 		System.out.println("Hotel is reset!");
 	}
-	
+
+	// save items to .ser file
 	public void write(Object obj) {
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
 			oos.writeObject(obj);

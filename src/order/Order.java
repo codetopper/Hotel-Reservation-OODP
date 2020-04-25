@@ -61,10 +61,6 @@ public class Order implements Serializable {
 	}
 
 	// setters
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
 	public void setStatus(ORDER_STATUS status) {
 		this.status = status;
 	}

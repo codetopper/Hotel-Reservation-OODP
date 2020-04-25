@@ -5,7 +5,6 @@ import java.util.ArrayList;
 // original package
 import data.DataUtil;
 import data.Hotel;
-import guest.Guest;
 
 public class MenuItemDAO {
 	

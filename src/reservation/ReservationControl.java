@@ -96,8 +96,8 @@ public class ReservationControl {
 			c.setTime(checkIn);
 			c.add(Calendar.HOUR_OF_DAY, 2);
 			try {
-				dateNow = (Date) formatter.parse(formatter.format(dateNow));
-				twoHoursLate = (Date) formatter.parse(formatter.format(c.getTime()));
+				dateNow = formatter.parse(formatter.format(dateNow));
+				twoHoursLate = formatter.parse(formatter.format(c.getTime()));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
@@ -239,9 +239,9 @@ public class ReservationControl {
 			do {
 				System.out.print("Check In (dd/MM/yyyy): ");
 				try {
-					checkInDate = (Date) formatter.parse(scanner.nextLine()+"-1500");
+					checkInDate = formatter.parse(scanner.nextLine()+"-1500");
 					Date dateNow = new Date();
-					dateNow = (Date) formatter.parse(formatter.format(dateNow));
+					dateNow = formatter.parse(formatter.format(dateNow));
 					
 					if (checkInDate.equals(dateNow) || checkInDate.after(dateNow)) {
 						checkIn = true;
@@ -259,10 +259,8 @@ public class ReservationControl {
 		do {
 			System.out.print("Check Out (dd/MM/yyyy): ");
 			try {
-				checkOutDate = (Date) formatter.parse(scanner.nextLine()+"-1200");
-				Date dateNow = new Date();
-				dateNow = (Date) formatter.parse(formatter.format(dateNow));
-				
+				checkOutDate = formatter.parse(scanner.nextLine()+"-1200");
+
 				if (checkInDate.before(checkOutDate)) {
 					checkIn = true;
 				}

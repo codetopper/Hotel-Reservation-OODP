@@ -14,12 +14,12 @@ public class AppBoundary {
 	
 	public static Scanner scanner = new Scanner(System.in);
 	// sub-boundaries
-	ReservationBoundary reservationBoundary = new ReservationBoundary();
-	MenuItemBoundary menuItemBoundary = new MenuItemBoundary();
-	OrderBoundary orderBoundary = new OrderBoundary();
-	RoomBoundary roomBoundary = new RoomBoundary();
-	GuestBoundary guestBoundary = new GuestBoundary();
-	DataUtil dataUtil = new DataUtil();
+	private ReservationBoundary reservationBoundary = new ReservationBoundary();
+	private MenuItemBoundary menuItemBoundary = new MenuItemBoundary();
+	private OrderBoundary orderBoundary = new OrderBoundary();
+	private RoomBoundary roomBoundary = new RoomBoundary();
+	private GuestBoundary guestBoundary = new GuestBoundary();
+	private DataUtil dataUtil = new DataUtil();
 	
 	public void display() {
 		int option = -1;

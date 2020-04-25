@@ -28,11 +28,10 @@ public class GuestBoundary {
 			System.out.println("1. Create");
 			System.out.println("2. Update");
 			System.out.println("3. Search");
-			System.out.println("4. Reset Guest List");
 			System.out.println("0. Back to Main Menu");
 			System.out.println("=====");
 
-			option = AppBoundary.inIntInRange("Option: ", 0, 4);
+			option = AppBoundary.inIntInRange("Option: ", 0, 3);
 
 			/*to create Guest details*/
 			if (option == 1) {
@@ -156,12 +155,6 @@ public class GuestBoundary {
 				System.out.print("Please enter the identity number: ");
 				identity = sc.nextLine();
 				System.out.print(gc.searchGuest(identity));
-			}
-
-			if (option == 4) {
-				gc.resetGuestList();
-				System.out.println("Guest list is reset to default.");
-				System.out.println();
 			}
 		}
 	}

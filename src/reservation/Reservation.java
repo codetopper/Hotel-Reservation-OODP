@@ -105,11 +105,7 @@ public class Reservation implements Serializable {
 	public void setStatus(RESERVATION_STATUS status) {
 		this.status = status;
 	}
-	
-	public void setBilling(int billing) {
-		this.billing = billing;
-	}
-	
+
 	public void setCheckInDate(Date checkInDate) {
 		this.checkInDate = checkInDate;
 	}

@@ -6,9 +6,7 @@ public class GuestControl {
 	GuestDAO dao = new GuestDAO();
 
 	/*declaring the attributes*/
-
 	String invalid = "0123456789+-*/()[]{}";
-
 
 	/*creating Guest details*/
 	/*We take the input from the user for the corresponding fields*/
@@ -233,24 +231,5 @@ public class GuestControl {
 			}
 		}
 			return "Guest not found!\n\n";
-	}
-	
-	public Guest searchGuest2(String identity) {
-
-		ArrayList<Guest> guests = dao.getAllItem();
-
-		for (Guest guest: guests)
-		{
-			if(identity.equals(guest.getId()))
-			{
-				System.out.print("Guest found!\n");
-				return guest;
-			}
-		}
-			return new Guest();
-	}
-
-	public void resetGuestList() {
-		dao.resetGuestList();
 	}
 }

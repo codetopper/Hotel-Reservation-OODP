@@ -62,15 +62,6 @@ public class Room implements Serializable {
     public BED_TYPE getBedType() {
         return bedType;
     }
-    public boolean isHasWifi() {
-        return hasWifi;
-    }
-    public boolean isHasSeaView() {
-        return hasSeaView;
-    }
-    public boolean isSmokable() {
-        return isSmokable;
-    }
     public double getPrice() { return price; }
     
     // setters

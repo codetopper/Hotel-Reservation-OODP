@@ -27,7 +27,6 @@ public class Guest implements Serializable {
 		
 		/*contact number of the Guest- can be home number of mobile number*/
 		private String contactNumber;
-
 		
 	    /*constructor of Guest class*/
 		public Guest(String id, String name, String creditCard, String address, String country, String gender, String nationality, String contactNumber) {
@@ -98,7 +97,6 @@ public class Guest implements Serializable {
 			this.id = id;
 		}
 
-		
 		/* to set the name of the Guest */
 		public void setName(String name)
 		{
@@ -139,7 +137,6 @@ public class Guest implements Serializable {
 		{
 			this.gender = gender;
 		}
-
 
 		/*to return the information about the Guest*/
 		public String print(){

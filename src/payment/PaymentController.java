@@ -30,32 +30,8 @@ public class PaymentController {
         sc = new Scanner(System.in);
     }
 
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
-    }
-
-    public double getServiceChargeRate() {
-        return serviceChargeRate;
-    }
-
-    public void setServiceChargeRate(double serviceChargeRate) {
-        this.serviceChargeRate = serviceChargeRate;
-    }
-
-    public double getWeekendRate() {
-        return weekendRate;
-    }
-
-    public void setWeekendRate(double weekendRate) {
-        this.weekendRate = weekendRate;
-    }
-
     //prints bill
-    public void printBillInvoice(Reservation reserve) {
+    private void printBillInvoice(Reservation reserve) {
         ArrayList<Order> allOrders = orderDAO.getAllItem();
         ArrayList<Order> orders = new ArrayList<>();
         for (Order order: allOrders) {
@@ -79,7 +55,7 @@ public class PaymentController {
     }
 
     // room service's order
-    void getRoomServicePriceList(ArrayList<Order> orders) {
+    private void getRoomServicePriceList(ArrayList<Order> orders) {
         System.out.println("Room Service:");
         int count = 1;
         if (orders.isEmpty()) {
@@ -234,7 +210,7 @@ public class PaymentController {
         return (TotalRoomCharge(reserve) + getRoomServicePrice(orders) + TotalServiceCharge(reserve, orders) - TotalDiscount(reserve, orders));
     }
 
-    double getRoomServicePrice(ArrayList<Order> orders) {
+    private double getRoomServicePrice(ArrayList<Order> orders) {
         double total = 0;
         for (Order order: orders) {
             total += order.getQuantity()*order.getMenuItem().getPrice();
