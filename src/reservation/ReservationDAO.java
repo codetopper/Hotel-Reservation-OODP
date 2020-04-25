@@ -10,7 +10,10 @@ public class ReservationDAO {
 	
 	// load data access
     private static DataUtil dataUtil = new DataUtil();
-    
+
+    // interfaces
+
+    //remove the given reservation
     public void removeReservation(Reservation reservation) {
     	Hotel hotel = dataUtil.readHotel();
     	ArrayList<Reservation> reservations = hotel.getReservations();
@@ -18,13 +21,14 @@ public class ReservationDAO {
     	dataUtil.write(hotel);
     }
 
-    // interfaces
+    // get a list of all reservations
     public ArrayList<Reservation> getAllItem() {
         Hotel hotel = dataUtil.readHotel();
         ArrayList<Reservation> reservations = hotel.getReservations();
         return reservations;
     }
 
+    // get the reservation with the id
     public Reservation getItemById(String id) {
         ArrayList<Reservation> reservations = getAllItem();
         Reservation reservationMatchingId = null;
@@ -38,7 +42,7 @@ public class ReservationDAO {
         return reservationMatchingId;
     }
     
-
+    // add a new reservation to the list
     public void add(Reservation reservation) {
         Hotel hotel = dataUtil.readHotel();
         ArrayList<Reservation> reservations = hotel.getReservations();
@@ -46,6 +50,7 @@ public class ReservationDAO {
         dataUtil.write(hotel);
     }
 
+    // update the given reservation
     public void update(Reservation reservation) {
         Hotel hotel = dataUtil.readHotel();
         ArrayList<Reservation> reservations = hotel.getReservations();
@@ -58,6 +63,7 @@ public class ReservationDAO {
         dataUtil.write(hotel);
     }
 
+    // get the reservation that contains the roomId
     public String getIdByRoom(String roomId) {
         Reservation reservationMatchingId;
         ArrayList<Reservation> reservations = getAllItem();

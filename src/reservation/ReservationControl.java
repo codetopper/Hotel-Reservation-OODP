@@ -27,7 +27,8 @@ public class ReservationControl {
 	GuestControl guestController = new GuestControl();
 	GuestDAO guestDAO = new GuestDAO();
 	Scanner scanner = ReservationBoundary.scanner;
-	
+
+	// print a reservation by id
 	public void printReservation(Reservation reservation) {
 		System.out.println();
 		System.out.println("Reservation id: "+ reservation.getId());
@@ -45,7 +46,8 @@ public class ReservationControl {
 		System.out.println("Your room IDs: " + reservation.getRoomId());
 		// total charge
 	}
-	
+
+	// print all reservations
 	public void printAllReservations() {
 		ArrayList<Reservation> reservations = dao.getAllItem();
 		for (Reservation reservation : reservations) {
@@ -54,7 +56,8 @@ public class ReservationControl {
 		System.out.println();
 		System.out.println("There are " + reservations.size() + " reservations.");
 	}
-	
+
+	// checks out a guest
 	public void checkOut(String guestId) {
 		PaymentController paymentController = new PaymentController();
 		ArrayList<Reservation> reservations = dao.getAllItem();
@@ -84,7 +87,8 @@ public class ReservationControl {
 		dao.update(reservation);
 		paymentController.payment(reservation);
 	}
-	
+
+	// check and updates reservations that have expired
 	public void expire() {
 		ArrayList<Reservation> reservations = dao.getAllItem();
 		Date dateNow = new Date();
@@ -118,7 +122,8 @@ public class ReservationControl {
 			dao.update(reservation);
 		}
 	}
-	
+
+	// creates a reservation
 	public void createReservation(boolean isWalkIn) {
 		String id, roomId;
 		int billing;
@@ -296,7 +301,7 @@ public class ReservationControl {
 		paymentController.printRoomInvoice(reservation);
 	}
 	
-
+	// update a reservation
 	public void updateReservation() {
 		Date checkOutDate = null;
 		Date checkInDate = null;
@@ -398,7 +403,7 @@ public class ReservationControl {
 	}
 	
 	
-	
+	// to check in a guest, for both walk-in and reserved
 	public void checkIn() {
 		System.out.println("1) Reserved\n2) Walk-in");
 		int choice = AppBoundary.inIntInRange("Option: ", 1, 2);
@@ -451,11 +456,13 @@ public class ReservationControl {
 			createReservation(true);
 		}
 	}
-	
+
+	// remove a reservation
 	public void removeReservation(Reservation reservation) {
 		dao.removeReservation(reservation);
 	}
-	
+
+	//validates the reservation id given
 	private boolean validateReservation (String givenId){
 		Reservation reservationMatchingId = dao.getItemById(givenId);
 

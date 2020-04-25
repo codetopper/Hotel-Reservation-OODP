@@ -9,11 +9,13 @@ public class MenuItemControl {
 	private MenuItemDAO dao = new MenuItemDAO();
 	
 	// interfaces
+	// create a menu item
 	public void create(String name, String description, double price) {
 		MenuItem menuItem = new MenuItem(name, description, price);
 		dao.add(menuItem);
 	}
-	
+
+	// updates the menu item
 	public void update(String name, String newName, String description, Double price) {
 		MenuItem oldMenuItem = dao.getItemByName(name);
 		MenuItem newMenuItem = dao.getItemByName(name);
@@ -29,11 +31,13 @@ public class MenuItemControl {
 		dao.update(oldMenuItem, newMenuItem);
 		System.out.println(newMenuItem.toString());
 	}
-	
+
+	// remove a menu item
 	public void remove(String name) {
 		dao.removeByName(name);
 	}
-	
+
+	//display all menu items
 	public void displayList() {
 		ArrayList<MenuItem> menuItems = dao.getAllItem();
 
@@ -47,6 +51,7 @@ public class MenuItemControl {
 		}
 	}
 
+	// validates that the menu item exists
 	public boolean validateName(String name) {
 		MenuItem menuItem = dao.getItemByName(name);
 		if (menuItem == null) {

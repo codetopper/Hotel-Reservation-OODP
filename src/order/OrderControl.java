@@ -19,6 +19,7 @@ public class OrderControl {
 	private RoomDAO roomDAO = new RoomDAO();
 	
 	// interfaces
+	// create an order
 	public void create(String menuItemName, int quantity, String remarks, String roomId) {
 		MenuItem menuItemMatchingName = menuItemDao.getItemByName(menuItemName);
 
@@ -41,7 +42,8 @@ public class OrderControl {
 			System.out.println("Room is not occupied!");
 		}
 	}
-	
+
+	// update an order by id
 	public void update(String id, int choice) {
 		ORDER_STATUS status = ORDER_STATUS.CONFIRMED;
 		Order orderMatchingId = orderDao.getItemById(id);
@@ -69,7 +71,8 @@ public class OrderControl {
 		orderMatchingId.setStatus(status);
 		orderDao.update(orderMatchingId);
 	}
-	
+
+	// display all orders
 	public void displayList() {
 		ArrayList<Order> orders = orderDao.getAllItem();
 		

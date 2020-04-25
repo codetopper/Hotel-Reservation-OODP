@@ -17,7 +17,8 @@ public class RoomControl {
 		
 		return roomMatchingId.roomDetails();
 	}
-	
+
+	// shows the details of a room, mainly for staff to check availability
 	public String getAvailabilityByGuestName(String name) {
 		ArrayList<Reservation> reservations = reservationDAO.getAllItem();
 		String roomInfo = "";
@@ -32,6 +33,7 @@ public class RoomControl {
 		return name + " does not have a reservation currently.";
 	}
 
+	// update room status
 	public String updateStatus(String id, int choice) {
 		ROOM_STATUS status = ROOM_STATUS.VACANT;
 		Room roomMatchingId = dao.getItemById(id);
@@ -61,6 +63,7 @@ public class RoomControl {
 		return id + " is now " + status.toString() + ".";
 	}
 
+	// shows the available rooms of each type
 	public String getAvailabilityByRoomType() {
 		ArrayList<Room> rooms = dao.getAllItem();
 		int singleCount = 0, doubleCount = 0, deluxeCount = 0, vipCount = 0;
@@ -113,6 +116,7 @@ public class RoomControl {
 				+ "\nVIP: " + vipCount + " out of " + vipTotal + " vacant.\n\t" + removeLastComma(vacantVIP);
 	}
 
+	// sorts the rooms by the status
 	public String getByStatus() {
 		ArrayList<Room> rooms = dao.getAllItem();
 		String vacant = "";
@@ -141,6 +145,7 @@ public class RoomControl {
 				+ "\nUnder Maintenance:\n\t" + removeLastComma(underMaintenance);
 	}
 
+	// format the string output
 	private String removeLastComma(String str) {
 		if (str != null && !str.isBlank() && !str.isEmpty()) {
 			str = str.substring(0, str.length() - 2);
@@ -148,6 +153,7 @@ public class RoomControl {
 		return str;
 	}
 
+	// validates that the room id exists
 	public boolean validateRoomId(String id) {
 		Room roomMatchingId = dao.getItemById(id);
 

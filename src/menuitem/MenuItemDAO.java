@@ -12,6 +12,8 @@ public class MenuItemDAO {
 	private DataUtil dataUtil = new DataUtil();
 
 	// implementations
+
+	// get the menu item with the given name
 	private MenuItem getItemByName(ArrayList<MenuItem> menuItems, String name) { // for internal use
 		MenuItem menuItemMatchingName = null;
 
@@ -26,13 +28,16 @@ public class MenuItemDAO {
 	}
 
 	// interfaces
+
+	// get a list of all menu items
 	public ArrayList<MenuItem> getAllItem() {
 		Hotel hotel = dataUtil.readHotel();
 		ArrayList<MenuItem> menuItems = hotel.getMenuItems();
 		
 		return menuItems;
 	}
-	
+
+	// get menu item with the given name
 	public MenuItem getItemByName(String name) {
 		ArrayList<MenuItem> menuItems = getAllItem();
 		MenuItem menuItemMatchingName = null;
@@ -47,6 +52,7 @@ public class MenuItemDAO {
 		return menuItemMatchingName;
 	}
 
+	// add a new menu item
 	public void add(MenuItem menuItemInput) {
 		Hotel hotel = dataUtil.readHotel();
 		ArrayList<MenuItem> menuItems = hotel.getMenuItems();
@@ -62,6 +68,7 @@ public class MenuItemDAO {
 		dataUtil.write(hotel);
 	}
 
+	// updates the old menu item
 	public void update(MenuItem menuItemInput, MenuItem menuItemUpdate) {
 		Hotel hotel = dataUtil.readHotel();
 		ArrayList<MenuItem> menuItems = hotel.getMenuItems();
@@ -70,6 +77,7 @@ public class MenuItemDAO {
 		dataUtil.write(hotel);
 	}
 
+	// remove a menu item by name
 	public void removeByName(String name) {
 		Hotel hotel = dataUtil.readHotel();
 		ArrayList<MenuItem> menuItems = hotel.getMenuItems();

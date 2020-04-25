@@ -11,6 +11,8 @@ public class GuestDAO {
     private DataUtil dataUtil = new DataUtil();
 
     // interfaces
+
+    // get the whole list of guest
     public ArrayList<Guest> getAllItem() {
         Hotel hotel = dataUtil.readHotel();
         ArrayList<Guest> guests = hotel.getGuests();

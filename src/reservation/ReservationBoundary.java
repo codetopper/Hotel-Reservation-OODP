@@ -86,7 +86,8 @@ public class ReservationBoundary {
             }
 		}
 	}
-	
+
+	// validates if the guest id exists in the database
 	private boolean validateReservation (String givenId){
 		Reservation reservationMatchingId = dao.getItemById(givenId);
 

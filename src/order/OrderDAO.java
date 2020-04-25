@@ -13,6 +13,8 @@ public class OrderDAO {
 	private DataUtil dataUtil = new DataUtil();
 
 	// implementations
+
+	// get the order of that id
 	private Order getItemById(ArrayList<Order> orders, String id) {
 		Order orderMatchingId = null;
 		
@@ -27,13 +29,15 @@ public class OrderDAO {
 	}
 	
 	//interfaces
+	// get a list of all orders
 	public ArrayList<Order> getAllItem() {
 		Hotel hotel = dataUtil.readHotel();
 		ArrayList<Order> orders = hotel.getOrders();
 		
 		return orders;
 	}
-	
+
+	// get the order by id
 	public Order getItemById(String id) {
 		ArrayList<Order> orders = getAllItem();
 		Order orderMatchingId = null;
@@ -47,7 +51,8 @@ public class OrderDAO {
 		
 		return orderMatchingId;
 	}
-	
+
+	// add an order
 	public void add(Order orderInput) {
 		Hotel hotel = dataUtil.readHotel();
 		ArrayList<Order> orders = hotel.getOrders();
@@ -55,7 +60,8 @@ public class OrderDAO {
 		orders.add(orderInput);
 		dataUtil.write(hotel);
 	}
-	
+
+	// update the status of the order given
 	public void update(Order orderInput) {
 		Hotel hotel = dataUtil.readHotel();
 		ArrayList<Order> orders = hotel.getOrders();

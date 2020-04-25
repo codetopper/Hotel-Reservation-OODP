@@ -159,6 +159,8 @@ public class GuestBoundary {
 		}
 	}
 
+
+	//check if guest exists in the list
 	private boolean validateGuest (String givenId){
 		Guest guestMatchingId = gc.dao.getItemById(givenId);
 
