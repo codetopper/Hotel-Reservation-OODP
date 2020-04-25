@@ -304,19 +304,19 @@ public class ReservationControl {
 		String reservationId = scanner.nextLine();
 		if(validateReservation(reservationId)) {
 			Reservation reservation = dao.getItemById(reservationId);
-			int choice=-1;
+			int input=-1;
 			int number;
 			boolean checkIn = false;
-			while (choice != 0) {
-				System.out.print("Please select the option you want to update:");
-				System.out.print("0) Exit");
-				System.out.print("1) Number of adults");
-				System.out.print("2) Number of children");
-				System.out.print("3) Room number");
-				System.out.print("4) Check In Date");
-				System.out.print("5) Check Out Date");
-				System.out.print("6) Reservation status");
-				int input = AppBoundary.inIntInRange("Option: ", 0, 6);
+			while (input != 0) {
+				System.out.println("Please select the option you want to update:");
+				System.out.println("0) Exit");
+				System.out.println("1) Number of adults");
+				System.out.println("2) Number of children");
+				System.out.println("3) Room number");
+				System.out.println("4) Check In Date");
+				System.out.println("5) Check Out Date");
+				System.out.println("6) Reservation status");
+				input = AppBoundary.inIntInRange("Option: ", 0, 6);
 				
 				switch(input) {
 				case 1:
@@ -350,7 +350,7 @@ public class ReservationControl {
 						System.out.print("CheckIn (dd/MM/yyyy):");
 						
 						try {
-							 checkInDate = (Date) formatter.parse(scanner.nextLine()+"1500");
+							 checkInDate = (Date) formatter.parse(scanner.nextLine()+"-1500");
 							Date dateNow = new Date();
 							dateNow = (Date) formatter.parse(formatter.format(dateNow));
 							
@@ -369,7 +369,7 @@ public class ReservationControl {
 					do {
 						System.out.print("CheckOut (dd/MM/yyyy):");
 						try {
-							checkOutDate = (Date) formatter.parse(scanner.nextLine()+"1200");
+							checkOutDate = (Date) formatter.parse(scanner.nextLine()+"-1200");
 							Date dateNow = new Date();
 							dateNow = (Date) formatter.parse(formatter.format(dateNow));
 							
